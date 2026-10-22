@@ -38,8 +38,7 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Diarsipkan di `docs/_archive/23-F-10.md`.
 
 ## F-11 Daftar perhatian
-- Setiap pemicu (belum melapor, dokumen kurang, selisih, perbaikan > 14 hari, antrean > 14 hari, tinjau ulang, anggaran > dana, saldo awal belum diverifikasi) menghasilkan baris dengan badge pemicu.
-- Verifikasi: `php artisan test --filter=Attention` → hijau.
+- Diarsipkan di `docs/_archive/23-F-11.md`.
 
 ## F-12 Tenggat dan pengingat
 - Diarsipkan di `docs/_archive/23-F-12.md`.

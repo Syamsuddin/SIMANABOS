@@ -1172,6 +1172,34 @@
         "docs/23 (F-10 diarsipkan)"
       ],
       "selesai": "2026-10-23T00:43:03+08:00"
+    },
+    {
+      "fitur": "F-11 Daftar perhatian",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T00:43:11+08:00",
+      "rencana": [
+        "app/Services/AttentionListBuilder.php",
+        "app/Http/Controllers/AttentionController.php",
+        "app/Http/Requests/AttentionFilterRequest.php",
+        "resources/views/attention/index.blade.php",
+        "resources/views/layouts/app.blade.php",
+        "routes/web.php",
+        "tests/Feature/Attention/AttentionTest.php",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [],
+      "detik": 0,
+      "tok_est": 0,
+      "asumsi": [
+        "Ambang 'lama' = 14 hari kalender; 'belum melapor' = draf melewati due_date; 'dokumen kurang' diperiksa untuk status diajukan/dalam_pemeriksaan/perlu_perbaikan; 'anggaran > dana' memakai versi RKAS terbaru via BudgetSummary::ceilingWarning",
+        "Tes memakai tahun < 2038 karena batas TIMESTAMP MySQL"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (F-11 diarsipkan)"
+      ],
+      "selesai": "2026-10-23T00:45:19+08:00"
     }
   ],
   "akumulasi": {
@@ -1179,6 +1207,6 @@
     "tok_est": 65144,
     "tok_terukur": 0,
     "step": 31,
-    "fitur": 13
+    "fitur": 14
   }
 }

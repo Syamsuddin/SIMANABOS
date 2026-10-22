@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\FundSourceController;
 use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\SchoolOfficialController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AttentionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordChangeController;
 use App\Http\Controllers\DashboardController;
@@ -43,6 +44,7 @@ Route::middleware(['auth', 'active'])->group(function () {
     Route::middleware('must.change.password')->group(function () {
         Route::view('/beranda', 'home')->name('home');
         Route::get('/dasbor', [DashboardController::class, 'index'])->name('dashboard.index');
+        Route::get('/perhatian', [AttentionController::class, 'index'])->name('attention.index');
         Route::get('/notifikasi', [NotificationController::class, 'index'])->name('notifications.index');
         Route::post('/notifikasi/baca-semua', [NotificationController::class, 'markAllRead'])->name('notifications.read-all');
 

@@ -144,6 +144,16 @@
       "chars": 31044,
       "cpt": 3.5,
       "est_tokens": 8870
+    },
+    {
+      "ts": "2026-10-23T00:45:20+08:00",
+      "type": "task",
+      "task": "F-11 Daftar perhatian",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 30828,
+      "cpt": 3.5,
+      "est_tokens": 8808
     }
   ],
   "measured_sessions": {}
