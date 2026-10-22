@@ -4,8 +4,10 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/) dan ve
 
 ## [Unreleased]
 
+### Ditambahkan
+- **F-08 Penguncian periode**: admin dinas membuka kunci laporan selesai dari layar pemeriksaan dengan alasan wajib (ditolak bila tahun ditutup); `needs_rereview` pada bulan sesudahnya yang selesai.
+
 ### Direncanakan
-- F-08 Penguncian periode: halaman buka kunci admin dan penghitungan ulang `needs_rereview`.
 - Fase 5–8: dokumen periodik, dasbor kabupaten, daftar perhatian, tenggat dan pengingat, rekap dan ekspor XLSX, tutup tahun, pengerasan dan rilis.
 
 ## [0.4.0] - 2026-10-23

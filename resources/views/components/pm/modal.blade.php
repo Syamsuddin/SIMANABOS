@@ -13,11 +13,14 @@
         >
             <h2 id="{{ $id }}-title" class="text-h2 text-ink">{{ $title }}</h2>
             <div class="mt-3 text-body text-ink-muted">{{ $slot }}</div>
-            <form method="POST" action="{{ $action }}" class="mt-5 flex justify-end gap-2" x-data="{ busy: false }" @submit="busy = true">
+            <form method="POST" action="{{ $action }}" class="mt-5" x-data="{ busy: false }" @submit="busy = true">
                 @csrf
                 @if ($method) @method($method) @endif
-                <x-pm.button type="button" variant="secondary" x-on:click="open = false">Batal</x-pm.button>
-                <x-pm.button type="submit" :variant="$tone === 'danger' ? 'danger' : 'primary'" x-bind:disabled="busy" x-bind:aria-busy="busy">{{ $confirm }}</x-pm.button>
+                @isset($fields)<div class="mb-4">{{ $fields }}</div>@endisset
+                <div class="flex justify-end gap-2">
+                    <x-pm.button type="button" variant="secondary" x-on:click="open = false">Batal</x-pm.button>
+                    <x-pm.button type="submit" :variant="$tone === 'danger' ? 'danger' : 'primary'" x-bind:disabled="busy" x-bind:aria-busy="busy">{{ $confirm }}</x-pm.button>
+                </div>
             </form>
         </div>
     </div>

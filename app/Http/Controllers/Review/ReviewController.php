@@ -8,9 +8,11 @@ use App\Actions\Reports\ReleaseReview;
 use App\Actions\Reports\RequestRevision;
 use App\Actions\Reports\ResolveNote;
 use App\Actions\Reports\StartReview;
+use App\Actions\Reports\UnlockReport;
 use App\Enums\ReportStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\StoreNoteRequest;
+use App\Http\Requests\Review\UnlockReportRequest;
 use App\Models\FiscalYear;
 use App\Models\MonthlyReport;
 use App\Models\ReviewNote;
@@ -114,5 +116,12 @@ class ReviewController extends Controller
         $complete($report, $request->user());
 
         return redirect()->route('review.reports.show', $report)->with('success', 'Laporan dinyatakan selesai diperiksa.');
+    }
+
+    public function unlock(UnlockReportRequest $request, MonthlyReport $report, UnlockReport $unlock): RedirectResponse
+    {
+        $unlock($report, $request->user(), $request->validated('reason'));
+
+        return redirect()->route('review.reports.show', $report)->with('success', 'Kunci laporan dibuka; laporan dikembalikan ke sekolah.');
     }
 }

@@ -48,6 +48,15 @@
                 Laporan terkunci dan tidak dapat diubah sekolah. Hanya admin dinas yang dapat membuka kunci.
             </x-pm.modal>
         @endif
+        @if ($canUnlock)
+            <x-pm.modal id="unlock" title="Buka kunci laporan?" :action="route('review.reports.unlock', $report)" trigger="Buka kunci" tone="danger" confirm="Buka kunci">
+                Laporan kembali ke status perlu perbaikan dan angkanya dapat diubah sekolah. Saldo bulan-bulan sesudahnya dihitung ulang setelah laporan diajukan kembali; yang sudah selesai ditandai tinjau ulang.
+                <x-slot:fields>
+                    <label for="unlock-reason" class="block text-label text-ink">Alasan buka kunci</label>
+                    <textarea id="unlock-reason" name="reason" rows="3" maxlength="500" required class="mt-1 w-full rounded-md border border-line bg-surface p-2 text-body text-ink"></textarea>
+                </x-slot:fields>
+            </x-pm.modal>
+        @endif
     </div>
 
     <div class="mt-5 grid items-start gap-5 wide:grid-cols-[2fr_1fr]">

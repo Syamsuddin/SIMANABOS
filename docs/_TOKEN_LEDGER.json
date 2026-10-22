@@ -104,6 +104,26 @@
       "chars": 31935,
       "cpt": 3.5,
       "est_tokens": 9124
+    },
+    {
+      "ts": "2026-10-23T00:26:21+08:00",
+      "type": "task",
+      "task": "F-08 Penguncian periode",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 31587,
+      "cpt": 3.5,
+      "est_tokens": 9025
+    },
+    {
+      "ts": "2026-10-23T00:37:41+08:00",
+      "type": "task",
+      "task": "F-08 Penguncian periode",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 31587,
+      "cpt": 3.5,
+      "est_tokens": 9025
     }
   ],
   "measured_sessions": {}

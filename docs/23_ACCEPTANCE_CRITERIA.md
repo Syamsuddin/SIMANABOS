@@ -27,10 +27,7 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Diarsipkan di `docs/_archive/23-F-07.md`. Sisa: tombol/halaman buka kunci admin (F-08).
 
 ## F-08 Penguncian periode
-- Given laporan selesai, When operator menyimpan angka atau dokumen, Then ditolak (403 Policy).
-- Given admin buka kunci Juni dengan alasan, ubah angka, ajukan ulang, Then Juli–Desember terhitung ulang dan yang berstatus selesai mendapat `needs_rereview=true` tanpa ganti status.
-- Given tahun ditutup, When buka kunci, Then ditolak.
-- Verifikasi: `php artisan test --filter=Unlock` → hijau.
+- Diarsipkan di `docs/_archive/23-F-08.md`.
 
 ## F-09 Dokumen periodik
 - Given Tahap I = Jan–Jun dan `reported_total_realization` diisi, Then selisih terhadap Σ realisasi neto Jan–Jun ditampilkan.

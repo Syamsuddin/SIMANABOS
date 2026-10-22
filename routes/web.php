@@ -111,6 +111,7 @@ Route::middleware(['auth', 'active'])->group(function () {
             Route::post('/laporan/{report}/catatan/{note}/selesai', [ReviewController::class, 'resolveNote'])->name('reports.notes.resolve');
             Route::post('/laporan/{report}/minta-perbaikan', [ReviewController::class, 'requestRevision'])->name('reports.revise');
             Route::post('/laporan/{report}/selesai', [ReviewController::class, 'complete'])->name('reports.complete');
+            Route::post('/laporan/{report}/buka-kunci', [ReviewController::class, 'unlock'])->name('reports.unlock');
         });
 
         Route::prefix('pemeriksa')->name('examiner.')->group(function () {
