@@ -29,4 +29,10 @@ class FiscalYearPolicy
     {
         return $this->viewAny($user) && $fiscalYear->status === FiscalYearStatus::Open;
     }
+
+    /** Tutup tahun: hanya admin dinas, hanya tahun yang masih terbuka (docs/05). */
+    public function close(User $user, FiscalYear $fiscalYear): bool
+    {
+        return $this->update($user, $fiscalYear);
+    }
 }

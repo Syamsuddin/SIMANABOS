@@ -48,8 +48,3 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Ubah `receipt_bos` tercatat dengan nilai lama dan baru, pelaku, waktu.
 - Tidak ada route ubah/hapus audit (`php artisan route:list | grep -i activity` kosong).
 - Verifikasi: `php artisan test --filter=Audit` → hijau.
-
-## F-15 Tutup tahun
-- Given semua Desember selesai, When tutup, Then `opening_balances` tahun berikut = saldo akhir Desember per sekolah × sumber dana dengan `origin=carried_over`.
-- Given ada Desember belum selesai, Then tutup hanya bisa setelah mengetik ulang tahun anggaran.
-- Verifikasi: `php artisan test --filter=CloseFiscalYear` → hijau.

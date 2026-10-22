@@ -11,6 +11,18 @@
         <x-slot:actions>
             <x-pm.link-button variant="secondary" :href="route('admin.fiscal-years.expense-types.index', $fiscalYear)">Jenis belanja</x-pm.link-button>
             <x-pm.link-button variant="secondary" :href="route('admin.fiscal-years.document-requirements.index', $fiscalYear)">Dokumen wajib</x-pm.link-button>
+            @if ($canClose)
+                <x-pm.modal id="close-year" title="Tutup tahun anggaran {{ $fiscalYear->year }}?" :action="route('admin.fiscal-years.close', $fiscalYear)" trigger="Tutup tahun" tone="danger" confirm="Tutup tahun">
+                    Saldo akhir Desember per sekolah dan sumber dana menjadi saldo awal Januari {{ $fiscalYear->year + 1 }} (baca-saja). Laporan tahun ini tidak dapat dibuka kuncinya lagi; koreksi lewat penyesuaian Januari berikutnya. Tindakan ini tidak dapat dibatalkan.
+                    <x-slot:fields>
+                        @if ($unfinishedDecember > 0)
+                            <x-pm.alert tone="warning" class="mb-3">{{ $unfinishedDecember }} laporan Desember belum selesai diperiksa. Ketik ulang tahun anggaran untuk tetap menutup.</x-pm.alert>
+                            <label for="confirm-year" class="block text-label text-ink">Ketik {{ $fiscalYear->year }} untuk konfirmasi</label>
+                            <input id="confirm-year" name="confirm_year" type="text" inputmode="numeric" maxlength="4" autocomplete="off" required class="mt-1 w-full rounded-md border border-line bg-surface p-2 text-body text-ink font-mono">
+                        @endif
+                    </x-slot:fields>
+                </x-pm.modal>
+            @endif
             <x-pm.badge :tone="$canEdit ? 'success' : 'neutral'" :icon="$canEdit ? 'check-circle' : 'shield'">{{ $fiscalYear->status->label() }}</x-pm.badge>
         </x-slot:actions>
     </x-pm.page-header>

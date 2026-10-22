@@ -66,6 +66,7 @@ Route::middleware(['auth', 'active'])->group(function () {
             Route::post('fiscal-years/{fiscal_year}/document-requirements', [DocumentRequirementController::class, 'store'])->name('fiscal-years.document-requirements.store');
             Route::post('fiscal-years/{fiscal_year}/document-requirements/copy', [DocumentRequirementController::class, 'copy'])->name('fiscal-years.document-requirements.copy');
             Route::delete('fiscal-years/{fiscal_year}/document-requirements/{document_requirement}', [DocumentRequirementController::class, 'destroy'])->scopeBindings()->name('fiscal-years.document-requirements.destroy');
+            Route::post('fiscal-years/{fiscal_year}/close', [FiscalYearController::class, 'close'])->name('fiscal-years.close');
             Route::put('fiscal-years/{fiscal_year}/deadlines', [FiscalYearController::class, 'updateDeadlines'])->name('fiscal-years.deadlines.update');
             Route::post('fiscal-years/{fiscal_year}/stages', [FiscalYearController::class, 'storeStage'])->name('fiscal-years.stages.store');
             Route::delete('fiscal-years/{fiscal_year}/stages/{stage}', [FiscalYearController::class, 'destroyStage'])->name('fiscal-years.stages.destroy');

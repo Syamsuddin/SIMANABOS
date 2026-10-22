@@ -16,6 +16,11 @@ return [
         'year_closed' => 'Tahun anggaran sudah ditutup; laporan tidak dapat dibuka kuncinya.',
         'locked' => 'Laporan tidak dapat diubah pada status ini.',
     ],
+    'fiscal_year' => [
+        'already_closed' => 'Tahun anggaran sudah ditutup.',
+        'next_missing' => 'Tahun anggaran :year belum dibuka. Buka tahun berikutnya sebelum menutup tahun ini.',
+        'confirm_year' => 'Masih ada laporan Desember yang belum selesai diperiksa. Ketik ulang tahun anggaran (:year) untuk menutup.',
+    ],
     'note' => [
         'not_open' => 'Catatan hanya dapat ditambah, ditanggapi, atau diselesaikan saat laporan sesuai tahapnya.',
         'already_resolved' => 'Catatan sudah ditandai selesai.',

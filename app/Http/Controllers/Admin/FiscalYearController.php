@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\FiscalYears\CloseFiscalYear;
 use App\Actions\FiscalYears\OpenFiscalYear;
+use App\Enums\FiscalYearStatus;
+use App\Enums\ReportStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CloseFiscalYearRequest;
 use App\Http\Requests\Admin\OpenFiscalYearRequest;
 use App\Http\Requests\Admin\StoreStageRequest;
 use App\Http\Requests\Admin\UpdateDeadlinesRequest;
 use App\Models\AppSetting;
 use App\Models\FiscalYear;
 use App\Models\FiscalYearStage;
+use App\Models\MonthlyReport;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
@@ -44,7 +49,20 @@ class FiscalYearController extends Controller
         return view('admin.fiscal-years.show', [
             'fiscalYear' => $fiscalYear->load(['stages', 'deadlines']),
             'canEdit' => request()->user()->can('update', $fiscalYear),
+            'canClose' => request()->user()->can('close', $fiscalYear),
+            'unfinishedDecember' => $fiscalYear->status === FiscalYearStatus::Open
+                ? MonthlyReport::query()->withoutGlobalScopes()->where('fiscal_year_id', $fiscalYear->id)->where('month', 12)
+                    ->where('status', '!=', ReportStatus::SelesaiDiperiksa->value)->count()
+                : 0,
         ]);
+    }
+
+    public function close(CloseFiscalYearRequest $request, FiscalYear $fiscalYear, CloseFiscalYear $closeFiscalYear): RedirectResponse
+    {
+        $count = $closeFiscalYear($fiscalYear, $request->user(), $request->validated('confirm_year'));
+
+        return redirect()->route('admin.fiscal-years.show', $fiscalYear)
+            ->with('success', "Tahun anggaran ditutup; {$count} saldo awal tahun berikut ditetapkan.");
     }
 
     public function updateDeadlines(UpdateDeadlinesRequest $request, FiscalYear $fiscalYear): RedirectResponse
