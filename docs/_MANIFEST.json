@@ -1,0 +1,530 @@
+{
+  "app": {
+    "name": "SIMANABOS",
+    "description": "Sistem Informasi Manajemen BOS — aplikasi web pengawasan dana BOS SD dan SMP tingkat kabupaten untuk Disdikbud Kab. Hulu Sungai Selatan: input agregat bulanan, arsip PDF berversi, pemeriksaan dinas, tindak lanjut perbaikan. ARKAS tetap sistem pencatatan resmi sekolah.",
+    "type": "greenfield",
+    "owner": "Dinas Pendidikan dan Kebudayaan Kabupaten Hulu Sungai Selatan",
+    "designer": "Syamsuddin, S.Pd, MM"
+  },
+  "confirmed_at": "2026-10-22T12:43:00Z",
+  "sources": {
+    "dosir": "SIMANABOS_DOSIR.md v1.0 (22 Okt 2026)",
+    "ui_canvas": "https://claude.ai/artifact/J9kQVAY7TeLE4CnzCnJSC6",
+    "design_system": "Pamong https://claude.ai/artifact/75fRYpQ6PWFYRk7GkjDXnc (version 1792459369-8bac)"
+  },
+  "requirements": {
+    "goal": "Dinas memantau penerimaan dan penggunaan dana BOS seluruh SD/SMP per bulan melalui angka agregat, arsip PDF, pemeriksaan kesesuaian, dan siklus perbaikan yang tercatat.",
+    "success_metric": ">= 90% laporan bulanan berstatus selesai_diperiksa paling lambat 30 hari setelah tenggat pada tahun anggaran pertama penuh.",
+    "features": [
+      {
+        "id": "F-01",
+        "name": "Autentikasi dan akun",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-02",
+        "name": "Data referensi",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-03",
+        "name": "Profil sekolah dan riwayat pengelola",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-04",
+        "name": "Anggaran tahunan: pagu, RKAS berversi, saldo awal",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-05",
+        "name": "Laporan bulanan + rumus saldo dua kantong",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-06",
+        "name": "Dokumen PDF berversi + kelengkapan",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-07",
+        "name": "Pengajuan dan pemeriksaan (mesin status)",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-08",
+        "name": "Penguncian periode dan buka kunci",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-09",
+        "name": "Dokumen periodik + angka pembanding tahap",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-10",
+        "name": "Dasbor kabupaten",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-11",
+        "name": "Daftar perhatian",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-12",
+        "name": "Tenggat dan pengingat in-app",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-13",
+        "name": "Rekap periode dan ekspor XLSX",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-14",
+        "name": "Jejak audit",
+        "priority": "mvp"
+      },
+      {
+        "id": "F-15",
+        "name": "Tutup tahun anggaran",
+        "priority": "mvp"
+      },
+      {
+        "id": "L-01",
+        "name": "Rincian per komponen penggunaan BOS",
+        "priority": "later"
+      },
+      {
+        "id": "L-02",
+        "name": "Notifikasi surel/WhatsApp",
+        "priority": "later"
+      },
+      {
+        "id": "L-03",
+        "name": "Sinkron profil sekolah dari Dapodik",
+        "priority": "later"
+      },
+      {
+        "id": "L-04",
+        "name": "Tema gelap",
+        "priority": "later"
+      }
+    ],
+    "out_of_scope": [
+      "Input transaksi satu per satu dan kuitansi per transaksi",
+      "OCR atau ekstraksi angka otomatis dari PDF",
+      "Integrasi otomatis ARKAS, Dapodik, bank, SIPD",
+      "Pembuatan dokumen resmi (BKU, SPTJM, laporan realisasi)",
+      "Jenjang selain SD dan SMP",
+      "Multi-kabupaten (multi-tenant)",
+      "Aplikasi mobile native",
+      "Tanda tangan elektronik",
+      "Penilaian keabsahan transaksi"
+    ],
+    "roles": [
+      {
+        "name": "admin_dinas",
+        "can": [
+          "referensi",
+          "akun",
+          "sekolah",
+          "pagu",
+          "tahun anggaran",
+          "aturan dokumen",
+          "buka kunci",
+          "tutup tahun",
+          "dasbor"
+        ],
+        "cannot": [
+          "mengisi laporan sekolah",
+          "memeriksa laporan"
+        ]
+      },
+      {
+        "name": "pemeriksa_dinas",
+        "can": [
+          "ambil/periksa/catat/selesaikan laporan",
+          "verifikasi saldo awal tahun pertama",
+          "dasbor"
+        ],
+        "cannot": [
+          "mengubah angka laporan",
+          "buka kunci",
+          "kelola akun"
+        ]
+      },
+      {
+        "name": "pimpinan_dinas",
+        "can": [
+          "baca dasbor, rekap, daftar perhatian"
+        ],
+        "cannot": [
+          "semua tulis"
+        ]
+      },
+      {
+        "name": "operator_sekolah",
+        "can": [
+          "isi RKAS, laporan, unggah PDF, ajukan, tarik kembali, tanggapi catatan (sekolah sendiri)"
+        ],
+        "cannot": [
+          "data sekolah lain",
+          "laporan terkunci"
+        ]
+      },
+      {
+        "name": "kepala_sekolah",
+        "can": [
+          "baca laporan sekolah sendiri",
+          "setujui pengajuan bila require_principal_approval aktif"
+        ],
+        "cannot": [
+          "mengubah angka"
+        ]
+      }
+    ],
+    "processes": [
+      {
+        "name": "Persiapan tahun anggaran",
+        "happy_path": "admin buka tahun -> pagu -> sistem buat 12 laporan draf per sekolah x sumber dana aktif",
+        "failure": "jenis belanja tahun sebelumnya terkunci karena dipakai"
+      },
+      {
+        "name": "Laporan bulanan",
+        "happy_path": "operator isi -> unggah PDF -> ajukan -> pemeriksa ambil -> selesai -> terkunci",
+        "failure": "bulan sebelumnya belum diajukan; dokumen wajib kurang; neto kumulatif < 0"
+      },
+      {
+        "name": "Perbaikan",
+        "happy_path": "pemeriksa catatan -> perlu_perbaikan -> operator tanggapi -> ajukan ulang",
+        "failure": "catatan terbuka belum ditanggapi"
+      },
+      {
+        "name": "Buka kunci",
+        "happy_path": "admin buka kunci + alasan -> perlu_perbaikan -> ajukan ulang -> hitung ulang saldo awal bulan sesudahnya -> bendera needs_rereview",
+        "failure": "tahun sudah ditutup"
+      },
+      {
+        "name": "Tutup tahun",
+        "happy_path": "admin tutup -> saldo akhir Desember menjadi opening_balances Januari tahun berikut (carried_over)",
+        "failure": "laporan Desember belum selesai tanpa konfirmasi ketik ulang tahun"
+      }
+    ],
+    "entities": [
+      {
+        "name": "School",
+        "key_attrs": [
+          "npsn",
+          "level",
+          "status",
+          "district_id"
+        ],
+        "relations": [
+          "SchoolOfficial",
+          "Allocation",
+          "MonthlyReport"
+        ]
+      },
+      {
+        "name": "MonthlyReport",
+        "key_attrs": [
+          "school_id",
+          "fiscal_year_id",
+          "fund_source_id",
+          "month",
+          "status"
+        ],
+        "relations": [
+          "ReportExpenseLine",
+          "ReportAdjustment",
+          "Document",
+          "ReviewNote",
+          "StatusHistory"
+        ]
+      },
+      {
+        "name": "BudgetVersion",
+        "key_attrs": [
+          "version_no",
+          "effective_date"
+        ],
+        "relations": [
+          "BudgetLine"
+        ]
+      },
+      {
+        "name": "Document",
+        "key_attrs": [
+          "documentable"
+        ],
+        "relations": [
+          "DocumentVersion",
+          "DocumentTag"
+        ]
+      }
+    ],
+    "sensitive_data": [
+      "password (hash)",
+      "NIP pengelola (pengguna berhak saja)",
+      "PDF laporan keuangan (disk privat)",
+      "jejak audit (append-only)"
+    ],
+    "stack": {
+      "backend": "PHP >= 8.3 + Laravel (versi stabil terbaru saat scaffold, dikunci di composer.lock)",
+      "frontend": "Blade + Tailwind CSS v4 + Vite + Alpine.js",
+      "db": "MySQL 8.0 InnoDB utf8mb4",
+      "versions": {
+        "php": ">=8.3",
+        "mysql": "8.0",
+        "tailwindcss": "4.x",
+        "alpinejs": "3.x"
+      },
+      "packages": [
+        "spatie/laravel-permission",
+        "spatie/laravel-activitylog",
+        "brick/math",
+        "openspout/openspout",
+        "pestphp/pest"
+      ],
+      "forbidden": [
+        "jQuery",
+        "SPA framework (React/Vue/Svelte)",
+        "Livewire",
+        "float/double untuk uang",
+        "PDF di disk publik",
+        "nilai UI di luar token 26",
+        "komponen React Pamong di runtime"
+      ],
+      "framework": {
+        "backend": "laravel",
+        "frontend": "blade"
+      }
+    },
+    "ui": {
+      "enabled": true,
+      "anchor": "Sistem desain Pamong (tema Terang) + kanvas SIMANABOS; token diporting ke @theme Tailwind v4, komponen dibuat ulang sebagai Blade x-pm.*; identitas Disdikbud Kab. HSS + lambang HSS"
+    },
+    "split": {
+      "enabled": false,
+      "role": "",
+      "contract_path": "",
+      "contract_version": ""
+    },
+    "architecture": {
+      "pattern": "Monolit modular berlapis: Controller tipis -> Form Request + Policy -> Action/Service; ReportBalanceCalculator dan ReportStateMachine sebagai rumah tunggal rumus dan transisi",
+      "integrations": []
+    },
+    "environment": {
+      "os": "Ubuntu Server 24.04 LTS, Nginx, PHP-FPM, MySQL 8",
+      "services": [
+        "MySQL",
+        "queue database driver + supervisor",
+        "cron schedule:run"
+      ],
+      "commands": {
+        "test": "php artisan test",
+        "migrate": "php artisan migrate",
+        "dev": "composer run dev",
+        "build": "npm run build"
+      }
+    },
+    "testing": "Pest: unit untuk kalkulator, mesin status, agregasi; feature untuk isolasi sekolah, siklus penuh, buka kunci, unggah PDF, tutup tahun; golden test Februari",
+    "security": [
+      "HTTPS + cookie secure/httponly/samesite=lax",
+      "tanpa registrasi mandiri; wajib ganti sandi",
+      "rate limit login 5/menit per username+IP",
+      "Policy + global scope per sekolah; 404 untuk sekolah lain",
+      "PDF via controller ber-Policy",
+      "penguncian optimistis lock_version",
+      "sesi 120 menit idle"
+    ],
+    "acceptance": "Kriteria per fitur di 23 + tes hijau + Policy diuji untuk peran tak berhak + empat state UI",
+    "definition_of_done": "Kriteria terima lulus, php artisan test hijau, tanpa regresi, ./vendor/bin/pint --test lulus, tak melanggar 20/21/26",
+    "change_policy": {
+      "git": "branch per fitur; dilarang commit langsung ke main; merge setelah tes hijau",
+      "irreversible_ops": [
+        "tutup tahun anggaran",
+        "buka kunci laporan",
+        "nonaktifkan sekolah/sumber dana",
+        "ubah jenis belanja yang sudah dipakai (diblokir)",
+        "migrasi destruktif",
+        "hapus laporan/versi dokumen (tidak tersedia)"
+      ],
+      "release_steps": [
+        "tes hijau",
+        "migrasi diuji di salinan DB",
+        "backup DB + dokumen",
+        "deploy",
+        "migrate --force",
+        "optimize",
+        "smoke test",
+        "rollback siap"
+      ]
+    }
+  },
+  "canonical_owners": {
+    "product_value": "00/01",
+    "features": "01",
+    "scope": "02",
+    "roadmap": "03",
+    "domain_terms": "04",
+    "balance_formula": "04",
+    "roles": "05",
+    "business_process": "06",
+    "report_state_machine": "06",
+    "schema": "07",
+    "architecture": "08",
+    "stack": "09",
+    "dev_env": "10",
+    "commands": "11",
+    "project_structure": "12",
+    "testing": "13",
+    "error_handling": "14",
+    "observability": "15",
+    "landmines": "16",
+    "repair_rules": "18",
+    "guardrails": "20",
+    "security": "21",
+    "change_policy": "22",
+    "definition_of_done": "24",
+    "ui_conventions": "26"
+  },
+  "referenced_by": {
+    "01": [
+      "02",
+      "03",
+      "23"
+    ],
+    "02": [
+      "03",
+      "17",
+      "22",
+      "23",
+      "CLAUDE"
+    ],
+    "03": [],
+    "04": [
+      "06",
+      "07",
+      "13",
+      "16",
+      "23"
+    ],
+    "05": [
+      "06",
+      "21",
+      "23",
+      "26"
+    ],
+    "06": [
+      "16",
+      "23"
+    ],
+    "07": [
+      "06",
+      "16",
+      "18",
+      "21",
+      "23"
+    ],
+    "08": [
+      "12"
+    ],
+    "09": [
+      "08",
+      "10",
+      "CLAUDE"
+    ],
+    "10": [],
+    "11": [
+      "10",
+      "13",
+      "16",
+      "23",
+      "25",
+      "CLAUDE"
+    ],
+    "12": [
+      "26",
+      "CLAUDE"
+    ],
+    "13": [
+      "23",
+      "24"
+    ],
+    "14": [
+      "16"
+    ],
+    "15": [
+      "16"
+    ],
+    "16": [
+      "18"
+    ],
+    "18": [
+      "17"
+    ],
+    "20": [
+      "24",
+      "CLAUDE"
+    ],
+    "21": [
+      "06",
+      "20",
+      "22",
+      "23"
+    ],
+    "22": [
+      "25",
+      "CLAUDE"
+    ],
+    "24": [
+      "23",
+      "25"
+    ],
+    "26": [
+      "23",
+      "CLAUDE"
+    ]
+  },
+  "collapsed": [
+    "17",
+    "19"
+  ],
+  "landmines": [
+    "Pengembalian belanja dan penyetoran kas negara adalah dua field berbeda; mencampurnya menghitung ganda",
+    "Saldo antarbulan tidak boleh dijumlahkan dalam rekap; pakai posisi akhir periode",
+    "Saldo awal bulan berantai: mengubah bulan lama menggeser semua bulan sesudahnya",
+    "Pratinjau Alpine.js bukan nilai resmi; nilai resmi dari ReportBalanceCalculator di server",
+    "Zona waktu tenggat: Asia/Makassar (WITA), bukan UTC"
+  ],
+  "assumptions": [
+    "Laravel versi stabil terbaru saat scaffold",
+    "Pest sebagai test runner",
+    "Alpine.js untuk interaktivitas",
+    "Batas unggah 20 MB per PDF",
+    "Tenggat default tanggal 10 bulan berikutnya",
+    "require_principal_approval default false",
+    "Sesi idle 120 menit",
+    "Ambang daftar perhatian 14 hari",
+    "pemeriksa_dinas melihat seluruh sekolah",
+    "Rekap menghitung laporan berstatus >= diajukan",
+    "Hanya tema Terang di MVP",
+    "Pemetaan status ke StatusBadge Pamong: draf, diajukan, verifikasi, dikembalikan, selesai, terlambat",
+    "Tahun tertutup tidak bisa buka kunci; koreksi lewat penyesuaian Januari berikutnya",
+    "Backup harian retensi 30 hari"
+  ],
+  "open_questions": [
+    "Daftar jenis belanja resmi + kode rekening ARKAS (sebelum Fase 1)",
+    "Matriks dokumen wajib final (sebelum Fase 3)",
+    "Tanggal tenggat resmi laporan bulanan (sebelum Fase 5)",
+    "Rentang bulan tiap tahap tahun berjalan (sebelum Fase 6)",
+    "Aktif/tidaknya persetujuan kepala sekolah (sebelum Fase 4)",
+    "Server hosting dan domain (sebelum Fase 8)",
+    "Kebijakan retensi arsip PDF (sebelum produksi)",
+    "Pemeriksa dibagi per wilayah atau semua (sebelum Fase 4)"
+  ],
+  "archive_pattern": "23-*.md"
+}

@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/*
+ * Token Pamong tema Terang — docs/26_UI_CONVENTIONS.md (token BEKU).
+ * Namespace bawaan Tailwind direset agar nilai di luar tabel token tidak bisa dipakai.
+ */
+@theme {
+    --color-*: initial;
+    --radius-*: initial;
+    --shadow-*: initial;
+    --font-*: initial;
+    --text-*: initial;
+
+    --color-surface: #f3f4f1;
+    --color-surface-raised: #ffffff;
+    --color-surface-sunken: #eaece7;
+    --color-line: #d8dbd3;
+    --color-line-strong: #8e958c;
+    --color-ink: #1a2127;
+    --color-ink-muted: #525c64;
+    --color-ink-subtle: #6a737a;
+    --color-sidebar-bg: #13294b;
+    --color-sidebar-ink: #e6ecf4;
+    --color-sidebar-ink-muted: #a9b8cc;
+    --color-sidebar-active: #244677;
+    --color-primary: #1d4f91;
+    --color-primary-hover: #163f75;
+    --color-on-primary: #ffffff;
+    --color-primary-soft: #e3ebf6;
+    --color-accent: #8a5d12;
+    --color-on-accent: #ffffff;
+    --color-accent-soft: #f6ecd7;
+    --color-success: #17693a;
+    --color-success-soft: #e1f1e7;
+    --color-warning: #7d5100;
+    --color-warning-soft: #fbeed3;
+    --color-danger: #ae2318;
+    --color-danger-soft: #fbe3df;
+    --color-on-danger: #ffffff;
+    --color-info: #1a5a9e;
+    --color-info-soft: #e1ecf8;
+    --color-focus: #b7791f;
+    --color-chart-1: #1d4f91;
+    --color-chart-2: #b7791f;
+    --color-chart-3: #5b8fc9;
+    --color-chart-4: #1f8a5a;
+    --color-overlay: rgba(8, 14, 20, 0.55);
+
+    --font-sans: 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+
+    --text-display: 32px;
+    --text-display--line-height: 40px;
+    --text-display--font-weight: 700;
+    --text-display--letter-spacing: -0.01em;
+    --text-h1: 24px;
+    --text-h1--line-height: 32px;
+    --text-h1--font-weight: 700;
+    --text-h2: 18px;
+    --text-h2--line-height: 26px;
+    --text-h2--font-weight: 650;
+    --text-h3: 15px;
+    --text-h3--line-height: 22px;
+    --text-h3--font-weight: 650;
+    --text-body: 14px;
+    --text-body--line-height: 22px;
+    --text-body--font-weight: 400;
+    --text-small: 13px;
+    --text-small--line-height: 20px;
+    --text-small--font-weight: 400;
+    --text-caption: 12px;
+    --text-caption--line-height: 16px;
+    --text-caption--font-weight: 600;
+    --text-overline: 11px;
+    --text-overline--line-height: 16px;
+    --text-overline--font-weight: 700;
+    --text-overline--letter-spacing: 0.08em;
+    --text-stat: 28px;
+    --text-stat--line-height: 34px;
+    --text-stat--font-weight: 700;
+    --text-stat--letter-spacing: -0.01em;
+    --text-mono: 13px;
+    --text-mono--line-height: 20px;
+    --text-mono--font-weight: 500;
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+    --radius-full: 999px;
+
+    --shadow-sm: 0 1px 2px rgba(16, 24, 32, 0.06);
+    --shadow-md: 0 4px 12px rgba(16, 24, 32, 0.1);
+    --shadow-lg: 0 16px 40px rgba(16, 24, 32, 0.18);
+
+    --spacing-control: 38px;
+    --spacing-sidebar: 264px;
+    --spacing-topbar: 64px;
+    --container-content: 1440px;
+
+    --breakpoint-nav: 760px;
+    --breakpoint-wide: 1100px;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-sans);
+    }
+
+    body {
+        background-color: var(--color-surface);
+        color: var(--color-ink);
+        font-size: var(--text-body);
+        line-height: var(--text-body--line-height);
+        font-variant-numeric: tabular-nums;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    :where(button, a, input, select, textarea, [tabindex]):focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 2px;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}

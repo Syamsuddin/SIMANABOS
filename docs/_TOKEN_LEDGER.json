@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "created": "2026-10-22T20:44:13+08:00",
+    "unit": "token",
+    "cpt_default": 3.5
+  },
+  "est_entries": [
+    {
+      "ts": "2026-10-22T20:44:13+08:00",
+      "type": "genesis",
+      "task": "paket lahir (scaffold)",
+      "route": "-",
+      "files": 29,
+      "chars": 11047,
+      "cpt": 3.5,
+      "est_tokens": 3156
+    },
+    {
+      "ts": "2026-10-22T21:34:28+08:00",
+      "type": "task",
+      "task": "F-01 Autentikasi dan akun (+fondasi)",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 33027,
+      "cpt": 3.5,
+      "est_tokens": 9436
+    },
+    {
+      "ts": "2026-10-22T21:40:23+08:00",
+      "type": "task",
+      "task": "F-02 Data referensi (kecamatan, sumber dana, tahun anggaran, tahap, tenggat)",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 33126,
+      "cpt": 3.5,
+      "est_tokens": 9465
+    },
+    {
+      "ts": "2026-10-22T21:58:33+08:00",
+      "type": "task",
+      "task": "F-03 Sekolah dan pengelola (+akun sekolah)",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 33006,
+      "cpt": 3.5,
+      "est_tokens": 9430
+    },
+    {
+      "ts": "2026-10-22T22:01:20+08:00",
+      "type": "task",
+      "task": "F-02 Jenis belanja per tahun",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 33237,
+      "cpt": 3.5,
+      "est_tokens": 9496
+    },
+    {
+      "ts": "2026-10-22T22:06:48+08:00",
+      "type": "task",
+      "task": "F-14 Jejak audit dasar",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 33237,
+      "cpt": 3.5,
+      "est_tokens": 9496
+    },
+    {
+      "ts": "2026-10-22T22:59:07+08:00",
+      "type": "task",
+      "task": "F-04 Anggaran tahunan",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 33053,
+      "cpt": 3.5,
+      "est_tokens": 9444
+    },
+    {
+      "ts": "2026-10-22T23:17:37+08:00",
+      "type": "task",
+      "task": "F-05 Laporan bulanan",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 32679,
+      "cpt": 3.5,
+      "est_tokens": 9337
+    },
+    {
+      "ts": "2026-10-22T23:34:05+08:00",
+      "type": "task",
+      "task": "F-06 Dokumen PDF (+F-02 jenis & aturan dokumen)",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 32483,
+      "cpt": 3.5,
+      "est_tokens": 9281
+    },
+    {
+      "ts": "2026-10-23T00:02:15+08:00",
+      "type": "task",
+      "task": "F-07 Pengajuan dan pemeriksaan",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 31935,
+      "cpt": 3.5,
+      "est_tokens": 9124
+    }
+  ],
+  "measured_sessions": {}
+}

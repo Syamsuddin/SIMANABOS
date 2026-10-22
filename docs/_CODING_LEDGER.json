@@ -1,0 +1,1052 @@
+{
+  "versi": "1.1",
+  "genesis": "2026-10-22T21:12:37+08:00",
+  "perintah": {
+    "test": "php artisan test",
+    "run": "composer run dev",
+    "migrate": "php artisan migrate",
+    "lint": "./vendor/bin/pint --test",
+    "node_path": "/Users/syams/.nvm/versions/node/v24.21.0/bin"
+  },
+  "sesi": [
+    {
+      "mulai": "2026-10-22T21:12:44+08:00",
+      "selesai": null,
+      "step": 7,
+      "detik": 1233,
+      "tok_est": 24810
+    },
+    {
+      "mulai": "2026-10-22T21:36:53+08:00",
+      "selesai": null,
+      "step": 5,
+      "detik": 88,
+      "tok_est": 11104
+    },
+    {
+      "mulai": "2026-10-22T21:52:53+08:00",
+      "selesai": null,
+      "step": 6,
+      "detik": 126,
+      "tok_est": 4853
+    },
+    {
+      "mulai": "2026-10-22T22:20:11+08:00",
+      "selesai": null,
+      "step": 6,
+      "detik": 1128,
+      "tok_est": 14984
+    },
+    {
+      "mulai": "2026-10-22T23:12:26+08:00",
+      "selesai": null,
+      "step": 7,
+      "detik": 326,
+      "tok_est": 9393
+    }
+  ],
+  "step_berjalan": null,
+  "blueprint": {
+    "sidik_awal": "0e5a72e32151f359",
+    "sidik": "c9309aad90a1f44d",
+    "dokumen": 27,
+    "disegel": "2026-10-22T23:34:05+08:00",
+    "riwayat": [
+      {
+        "dari": "0e5a72e32151f359",
+        "ke": "0811a147fdc81608",
+        "pada": "2026-10-22T21:34:13+08:00"
+      },
+      {
+        "dari": "0811a147fdc81608",
+        "ke": "17fa77804bc172d7",
+        "pada": "2026-10-22T21:52:53+08:00"
+      },
+      {
+        "dari": "17fa77804bc172d7",
+        "ke": "f0b9dadcf34b8cd2",
+        "pada": "2026-10-22T22:20:11+08:00"
+      },
+      {
+        "dari": "f0b9dadcf34b8cd2",
+        "ke": "22fd7d88e7188dde",
+        "pada": "2026-10-22T23:12:26+08:00"
+      },
+      {
+        "dari": "22fd7d88e7188dde",
+        "ke": "c9309aad90a1f44d",
+        "pada": "2026-10-22T23:34:05+08:00"
+      }
+    ],
+    "sidik_sebelumnya": "22fd7d88e7188dde"
+  },
+  "riwayat_fitur": [
+    {
+      "fitur": "F-01 Autentikasi dan akun (+fondasi)",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T21:13:48+08:00",
+      "rencana": [
+        "composer.json",
+        "package.json",
+        "vite.config.js",
+        ".env.example",
+        "bootstrap/app.php",
+        "app/Providers/AppServiceProvider.php",
+        "app/Models/User.php",
+        "app/Http/Controllers/Auth/LoginController.php",
+        "app/Http/Controllers/Auth/PasswordChangeController.php",
+        "app/Http/Middleware/EnsurePasswordChanged.php",
+        "app/Http/Requests/Auth/LoginRequest.php",
+        "app/Http/Requests/Auth/ChangePasswordRequest.php",
+        "app/Enums/RoleName.php",
+        "database/migrations/0001_01_01_000000_create_users_table.php",
+        "database/seeders/RoleSeeder.php",
+        "database/seeders/AdminSeeder.php",
+        "database/seeders/DatabaseSeeder.php",
+        "database/factories/UserFactory.php",
+        "routes/web.php",
+        "resources/css/app.css",
+        "resources/js/app.js",
+        "resources/views/layouts/guest.blade.php",
+        "resources/views/layouts/app.blade.php",
+        "resources/views/auth/login.blade.php",
+        "resources/views/auth/change-password.blade.php",
+        "resources/views/components/pm/button.blade.php",
+        "resources/views/components/pm/text-field.blade.php",
+        "resources/views/components/pm/alert.blade.php",
+        "resources/views/components/pm/app-shell.blade.php",
+        "lang/id/auth.php",
+        "lang/id/validation.php",
+        "tests/Pest.php",
+        "tests/Feature/Auth/LoginTest.php",
+        "tests/Feature/Auth/PasswordChangeTest.php",
+        "tests/Feature/Auth/RateLimitTest.php"
+      ],
+      "total_step": 7,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi + scaffold",
+          "mulai": "2026-10-22T21:13:56+08:00",
+          "selesai": "2026-10-22T21:18:59+08:00",
+          "detik": 303,
+          "tok_est": 9158,
+          "muat": [
+            "docs/07_DATA_MODEL.md",
+            "docs/09_STACK.md",
+            "docs/11_COMMANDS.md",
+            "docs/12_PROJECT_STRUCTURE.md",
+            "docs/13_TESTING.md",
+            "docs/21_SECURITY_RULES.md",
+            "docs/26_UI_CONVENTIONS.md",
+            "database/migrations/0001_01_01_000000_create_users_table.php"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Model + role + seeder",
+          "mulai": "2026-10-22T21:18:59+08:00",
+          "selesai": "2026-10-22T21:19:27+08:00",
+          "detik": 28,
+          "tok_est": 1294,
+          "muat": [
+            "app/Enums/RoleName.php",
+            "app/Models/User.php",
+            "database/factories/UserFactory.php",
+            "database/seeders/RoleSeeder.php",
+            "database/seeders/AdminSeeder.php",
+            "database/seeders/DatabaseSeeder.php"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Service/logika auth",
+          "mulai": "2026-10-22T21:19:28+08:00",
+          "selesai": "2026-10-22T21:20:48+08:00",
+          "detik": 80,
+          "tok_est": 3586,
+          "muat": [
+            "app/Http/Requests/Auth/LoginRequest.php",
+            "app/Http/Requests/Auth/ChangePasswordRequest.php",
+            "app/Http/Middleware/EnsurePasswordChanged.php",
+            "app/Http/Middleware/EnsureUserIsActive.php",
+            "app/Providers/AppServiceProvider.php",
+            "bootstrap/app.php",
+            "lang/id/auth.php",
+            "lang/id/validation.php",
+            "lang/id/pagination.php"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "Endpoint/controller/rute",
+          "mulai": "2026-10-22T21:20:48+08:00",
+          "selesai": "2026-10-22T21:20:56+08:00",
+          "detik": 9,
+          "tok_est": 688,
+          "muat": [
+            "app/Http/Controllers/Auth/LoginController.php",
+            "app/Http/Controllers/Auth/PasswordChangeController.php",
+            "routes/web.php"
+          ]
+        },
+        {
+          "no": 5,
+          "nama": "UI (token, komponen x-pm, halaman auth)",
+          "mulai": "2026-10-22T21:20:56+08:00",
+          "selesai": "2026-10-22T21:33:02+08:00",
+          "detik": 726,
+          "tok_est": 2953,
+          "muat": [
+            "resources/css/app.css",
+            "resources/js/app.js",
+            "vite.config.js",
+            "resources/views/components/pm/*.blade.php",
+            "resources/views/layouts/guest.blade.php",
+            "resources/views/layouts/app.blade.php",
+            "resources/views/auth/login.blade.php",
+            "resources/views/auth/change-password.blade.php",
+            "resources/views/home.blade.php"
+          ]
+        },
+        {
+          "no": 6,
+          "nama": "Tes Pest",
+          "mulai": "2026-10-22T21:33:02+08:00",
+          "selesai": "2026-10-22T21:33:41+08:00",
+          "detik": 40,
+          "tok_est": 2882,
+          "muat": [
+            "tests/Pest.php",
+            "tests/Unit/Enums/RoleNameTest.php",
+            "tests/Feature/Auth/LoginTest.php",
+            "tests/Feature/Auth/PasswordChangeTest.php",
+            "tests/Feature/Auth/RateLimitTest.php"
+          ]
+        },
+        {
+          "no": 7,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-22T21:33:41+08:00",
+          "selesai": "2026-10-22T21:34:27+08:00",
+          "detik": 47,
+          "tok_est": 4249,
+          "muat": [
+            "scripts/gerbang.sh",
+            "docs/23_ACCEPTANCE_CRITERIA.md",
+            "docs/_archive/23-F-01.md"
+          ]
+        }
+      ],
+      "detik": 1233,
+      "tok_est": 24810,
+      "deviasi": [
+        "Berkas di luar rencana awal (perlu untuk slice): home.blade.php (halaman landas pasca-login), middleware EnsureUserIsActive (docs/21: sesi akun nonaktif diakhiri), komponen x-pm icon/icon-button/toast/card/page-header/description-list/sidebar/topbar (inventaris docs/26), config/permission.php, config/app.php (timezone+locale), phpunit.xml (MySQL test DB), tests/Unit/Enums/RoleNameTest.php, lang/id/pagination.php",
+        "vite.config.js: blok fonts Bunny CDN dari scaffold dihapus (docs/09 melarang CDN), diganti fontsource self-hosted",
+        "resources/js/bootstrap.js scaffold kosong dihapus"
+      ],
+      "asumsi": [
+        "APP timezone Asia/Makassar (landmine WITA di manifest), timestamp DB disimpan WITA",
+        "users.school_id belum ber-FK ke schools; FK ditambahkan migrasi F-03",
+        "Rate limit memakai throttle:login (menghitung semua percobaan, bukan hanya gagal) + Limit::response redirect ber-pesan",
+        "Tanpa fitur remember-me (tak ada di docs)",
+        "Role sekolah belum wajib school_id (validasi saat CRUD akun, bukan di slice ini)",
+        "URL berbahasa Indonesia: /masuk /keluar /ganti-sandi /beranda"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (blok F-01 diarsipkan ke docs/_archive/23-F-01.md)"
+      ],
+      "landmine_tersentuh": [
+        "node Homebrew 26.4.0 rusak (libada.3.dylib); proyek memakai node nvm v24.21.0 (PATH=$HOME/.nvm/versions/node/v24.21.0/bin)",
+        "folder proyek BUKAN repo git: commit/branch (docs/22) belum dilakukan, gerbang S4/S7/S8 tak bisa berjalan"
+      ],
+      "ditunda": [
+        "CRUD akun oleh admin (buat akun, reset sandi, nonaktifkan) — Fase 0 berikutnya",
+        "F-02, F-03, F-14 dasar (sisa Fase 0)",
+        "Header keamanan/HSTS/cookie secure — konfigurasi Nginx & .env produksi (docs/25)",
+        "Tabel activity_log (spatie) — F-14"
+      ],
+      "selesai": "2026-10-22T21:34:28+08:00"
+    },
+    {
+      "fitur": "F-02 Data referensi (kecamatan, sumber dana, tahun anggaran, tahap, tenggat)",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T21:36:54+08:00",
+      "rencana": [
+        "database/migrations/2026_10_22_200000_create_reference_tables.php",
+        "database/migrations/2026_10_22_200100_create_fiscal_year_tables.php",
+        "app/Enums/FiscalYearStatus.php",
+        "app/Models/District.php",
+        "app/Models/FundSource.php",
+        "app/Models/FiscalYear.php",
+        "app/Models/FiscalYearStage.php",
+        "app/Models/MonthlyDeadline.php",
+        "app/Actions/FiscalYears/OpenFiscalYear.php",
+        "app/Policies/DistrictPolicy.php",
+        "app/Policies/FundSourcePolicy.php",
+        "app/Policies/FiscalYearPolicy.php",
+        "app/Http/Requests/Admin/*",
+        "app/Http/Controllers/Admin/*",
+        "routes/web.php",
+        "resources/views/layouts/app.blade.php",
+        "resources/views/admin/*",
+        "resources/views/components/pm/*",
+        "lang/id/*",
+        "database/seeders/*",
+        "database/factories/*",
+        "tests/Feature/Reference/*",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "docs/03_ROADMAP.md"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi",
+          "mulai": "2026-10-22T21:36:54+08:00",
+          "selesai": "2026-10-22T21:37:03+08:00",
+          "detik": 9,
+          "tok_est": 2912,
+          "muat": [
+            "docs/07_DATA_MODEL.md",
+            "migrations"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Model + Action",
+          "mulai": "2026-10-22T21:37:23+08:00",
+          "selesai": "2026-10-22T21:37:23+08:00",
+          "detik": 1,
+          "tok_est": 615,
+          "muat": [
+            "app/Models/FiscalYear.php",
+            "app/Actions/FiscalYears/OpenFiscalYear.php"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Policy, request, controller, rute",
+          "mulai": "2026-10-22T21:38:07+08:00",
+          "selesai": "2026-10-22T21:38:21+08:00",
+          "detik": 14,
+          "tok_est": 1263,
+          "muat": [
+            "app/Http/Controllers/Admin/FiscalYearController.php",
+            "routes/web.php"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "UI + empat state",
+          "mulai": "2026-10-22T21:39:09+08:00",
+          "selesai": "2026-10-22T21:39:47+08:00",
+          "detik": 39,
+          "tok_est": 4241,
+          "muat": [
+            "docs/26_UI_CONVENTIONS.md",
+            "resources/views/admin/fiscal-years/show.blade.php"
+          ]
+        },
+        {
+          "no": 5,
+          "nama": "Tes",
+          "mulai": "2026-10-22T21:39:47+08:00",
+          "selesai": "2026-10-22T21:40:11+08:00",
+          "detik": 25,
+          "tok_est": 2073,
+          "muat": [
+            "tests/Feature/Reference/ReferenceDataTest.php"
+          ]
+        }
+      ],
+      "detik": 88,
+      "tok_est": 11104,
+      "deviasi": [
+        "Gate::authorize di controller (bukan trait AuthorizesRequests) agar Controller.php tak disentuh",
+        "components/pm: tambah badge, empty-state, checkbox, data-table, link-button (inventaris docs/26 memuat badge/empty-state/data-table; checkbox sudah; link-button tambahan untuk tautan bergaya tombol — perlu dicatat di 26)",
+        "text-field: kunci array a[1] dipetakan ke a.1 untuk old()/error"
+      ],
+      "asumsi": [
+        "Tenggat bulan M = default_deadline_day bulan M+1 (Des → Jan tahun berikut) sesuai asumsi manifest",
+        "Tahap tidak dibuat otomatis karena rentang bulan resmi masih [TERBUKA]",
+        "Kecamatan tanpa hapus (belum ada sekolah); seeder hanya sumber dana REGULER/KINERJA, kecamatan tidak dikarang"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-02 dasar diarsipkan ke _archive/23-F-02-dasar.md)"
+      ],
+      "ditunda": [
+        "Jenis belanja (Fase 1), jenis dokumen & aturan wajib (Fase 3), akun operator + sekolah (F-03), audit dasar F-14, tutup tahun (F-15)"
+      ],
+      "selesai": "2026-10-22T21:40:23+08:00"
+    },
+    {
+      "fitur": "F-03 Sekolah dan pengelola (+akun sekolah)",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T21:54:06+08:00",
+      "rencana": [
+        "database/migrations/2026_10_22_210000_create_schools_tables.php",
+        "app/Enums/SchoolLevel.php",
+        "app/Enums/SchoolStatus.php",
+        "app/Enums/OfficialRole.php",
+        "app/Models/School.php",
+        "app/Models/SchoolOfficial.php",
+        "app/Models/User.php",
+        "app/Models/Scopes/SchoolScope.php",
+        "app/Policies/SchoolPolicy.php",
+        "app/Policies/SchoolOfficialPolicy.php",
+        "app/Policies/UserPolicy.php",
+        "app/Actions/Schools/ProposeOfficial.php",
+        "app/Actions/Schools/ApproveOfficial.php",
+        "app/Http/Controllers/Admin/SchoolController.php",
+        "app/Http/Controllers/Admin/SchoolOfficialController.php",
+        "app/Http/Controllers/Admin/UserController.php",
+        "app/Http/Controllers/School/ProfileController.php",
+        "app/Http/Requests/Admin/SchoolRequest.php",
+        "app/Http/Requests/Admin/UserRequest.php",
+        "app/Http/Requests/Admin/ResetPasswordRequest.php",
+        "app/Http/Requests/School/ProfileRequest.php",
+        "app/Http/Requests/School/OfficialRequest.php",
+        "database/factories/SchoolFactory.php",
+        "database/factories/SchoolOfficialFactory.php",
+        "routes/web.php",
+        "resources/views/layouts/app.blade.php",
+        "resources/views/components/pm/select.blade.php",
+        "resources/views/components/pm/modal.blade.php",
+        "resources/views/admin/schools/index.blade.php",
+        "resources/views/admin/schools/form.blade.php",
+        "resources/views/admin/schools/show.blade.php",
+        "resources/views/admin/users/index.blade.php",
+        "resources/views/admin/users/form.blade.php",
+        "resources/views/school/profile/show.blade.php",
+        "resources/views/school/profile/edit.blade.php",
+        "tests/Feature/School/SchoolAdminTest.php",
+        "tests/Feature/School/SchoolOfficialTest.php",
+        "tests/Feature/School/SchoolScopeTest.php",
+        "tests/Feature/Account/UserAdminTest.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi",
+          "mulai": "2026-10-22T21:54:06+08:00",
+          "selesai": "2026-10-22T21:54:29+08:00",
+          "detik": 23,
+          "tok_est": 0,
+          "muat": [
+            "migrasi",
+            "enum",
+            "model",
+            "scope",
+            "factory"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Service/logika domain + Policy",
+          "mulai": "2026-10-22T21:54:46+08:00",
+          "selesai": "2026-10-22T21:54:46+08:00",
+          "detik": 1,
+          "tok_est": 1446,
+          "muat": [
+            "app/Actions/Schools/ApproveOfficial.php",
+            "app/Actions/Schools/ProposeOfficial.php",
+            "app/Policies/SchoolPolicy.php",
+            "app/Policies/SchoolOfficialPolicy.php",
+            "app/Policies/UserPolicy.php"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Controller + request + rute",
+          "mulai": "2026-10-22T21:55:32+08:00",
+          "selesai": "2026-10-22T21:55:33+08:00",
+          "detik": 2,
+          "tok_est": 0,
+          "muat": [
+            "controllers",
+            "requests",
+            "routes"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "Tes",
+          "mulai": "2026-10-22T21:57:35+08:00",
+          "selesai": "2026-10-22T21:58:12+08:00",
+          "detik": 37,
+          "tok_est": 0,
+          "muat": [
+            "tests/Feature/School",
+            "tests/Feature/Account"
+          ]
+        },
+        {
+          "no": 5,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-22T21:58:12+08:00",
+          "selesai": "2026-10-22T21:58:32+08:00",
+          "detik": 21,
+          "tok_est": 1714,
+          "muat": [
+            "docs/23_ACCEPTANCE_CRITERIA.md"
+          ]
+        }
+      ],
+      "detik": 84,
+      "tok_est": 3160,
+      "deviasi": [
+        "Komponen x-pm.select dan x-pm.modal ditambahkan (ada di inventaris docs/26); modal tanpa focus-trap karena plugin Alpine focus = dependensi baru",
+        "Berkas di luar rencana: resources/views/school/partials/{officials,official-form}.blade.php (partial bersama admin/sekolah)",
+        "Profil sekolah dilayani rute /sekolah (school.profile.*) dan admin /admin/schools/{id}"
+      ],
+      "asumsi": [
+        "Usulan pengelola = baris approved_at NULL; invarian satu-aktif hanya untuk baris tersahkan",
+        "Usulan admin langsung disahkan; usulan operator menunggu admin",
+        "ended_at pengelola lama = started_at baru - 1 hari; started_at baru wajib setelah yang menjabat",
+        "Satu usulan menunggu per peran per sekolah",
+        "Admin boleh menolak usulan (hapus baris belum sah); baris sah tidak pernah dihapus",
+        "Sekolah tanpa route hapus, hanya nonaktif/aktif",
+        "Sandi akun diset admin (sementara, must_change_password=1), tidak dibangkitkan sistem",
+        "Kepala sekolah hanya baca profil (docs/05)"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-03 diarsipkan ke docs/_archive/23-F-03.md)"
+      ],
+      "ditunda": [
+        "Kriteria identity_snapshot (F-05)",
+        "Hapus-sekolah-tanpa-laporan tidak disediakan; kriteria 'punya laporan' belum bisa diuji (F-05)",
+        "Audit perubahan sekolah/akun/pengelola (F-14 dasar, sisa Fase 0)",
+        "Focus-trap modal"
+      ],
+      "selesai": "2026-10-22T21:58:32+08:00"
+    },
+    {
+      "fitur": "F-02 Jenis belanja per tahun",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T22:00:11+08:00",
+      "rencana": [
+        "database/migrations/2026_10_23_100000_create_expense_types_table.php",
+        "app/Models/ExpenseType.php",
+        "app/Models/FiscalYear.php",
+        "app/Policies/ExpenseTypePolicy.php",
+        "app/Http/Requests/Admin/ExpenseTypeRequest.php",
+        "app/Http/Controllers/Admin/ExpenseTypeController.php",
+        "app/Actions/FiscalYears/CopyExpenseTypes.php",
+        "resources/views/admin/expense-types/index.blade.php",
+        "resources/views/admin/expense-types/form.blade.php",
+        "resources/views/admin/fiscal-years/show.blade.php",
+        "routes/web.php",
+        "tests/Feature/Reference/ExpenseTypeTest.php"
+      ],
+      "total_step": 0,
+      "step": [],
+      "detik": 0,
+      "tok_est": 0,
+      "asumsi": [
+        "Jenis belanja hanya bisa diubah saat tahun anggaran open (selaras kebijakan tahap/tenggat)"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-02)"
+      ],
+      "ditunda": [
+        "Penolakan ubah code/hapus saat dipakai laporan — menunggu F-05; seed contoh jenis belanja (10_DEV_ENV) belum dibuat"
+      ],
+      "selesai": "2026-10-22T22:01:20+08:00"
+    },
+    {
+      "fitur": "F-14 Jejak audit dasar",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T22:03:44+08:00",
+      "rencana": [
+        "config/activitylog.php",
+        "database/migrations/2026_10_23_110000_create_activity_log_table.php",
+        "app/Models/User.php",
+        "app/Models/SchoolOfficial.php",
+        "tests/Feature/Audit/AuditTest.php",
+        "routes/web.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Model",
+          "mulai": "2026-10-22T22:05:53+08:00",
+          "selesai": "2026-10-22T22:06:35+08:00",
+          "detik": 42,
+          "tok_est": 1693,
+          "muat": [
+            "app/Models/User.php",
+            "app/Models/SchoolOfficial.php",
+            "tests/Feature/Audit/AuditTest.php"
+          ]
+        }
+      ],
+      "detik": 42,
+      "tok_est": 1693,
+      "deviasi": [
+        "Berkas konfigurasi: config/activitylog.php dipublikasikan dari vendor; migrasi activity_log (2026_10_22_220345) dijalankan pengguna"
+      ],
+      "asumsi": [
+        "Log hanya atribut berubah (logOnlyDirty); User mengecualikan password/remember_token lewat logOnly; pelaku=causer dari auth saat ada"
+      ],
+      "ditunda": [
+        "Kriteria receipt_bos F-14 (menunggu MonthlyReport, F-05) — blok F-14 tetap di 23",
+        "Audit model lain (School, FiscalYear, ExpenseType, dst per docs/15) dan tampilan riwayat di detail laporan",
+        "Fase 0 sisa: tidak ada; F-14 penuh di Fase 8"
+      ],
+      "selesai": "2026-10-22T22:06:48+08:00"
+    },
+    {
+      "fitur": "F-04 Anggaran tahunan",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T22:25:22+08:00",
+      "rencana": [
+        "database/migrations/2026_10_24_100000_create_budget_tables.php",
+        "database/migrations/2026_10_24_100100_create_monthly_reports_table.php",
+        "app/Enums/ReportStatus.php",
+        "app/Models/Allocation.php",
+        "app/Models/OpeningBalance.php",
+        "app/Models/BudgetVersion.php",
+        "app/Models/BudgetLine.php",
+        "app/Models/MonthlyReport.php",
+        "app/Policies/AllocationPolicy.php",
+        "app/Policies/OpeningBalancePolicy.php",
+        "app/Policies/BudgetVersionPolicy.php",
+        "app/Actions/Budget/SaveAllocation.php",
+        "app/Actions/Budget/SaveBudgetVersion.php",
+        "app/Actions/Budget/SaveOpeningBalance.php",
+        "app/Actions/Budget/VerifyOpeningBalance.php",
+        "app/Actions/Budget/BudgetSummary.php",
+        "app/Http/Controllers/Admin/AllocationController.php",
+        "app/Http/Controllers/School/BudgetController.php",
+        "app/Http/Controllers/School/OpeningBalanceController.php",
+        "app/Http/Controllers/Examiner/OpeningBalanceController.php",
+        "app/Http/Requests/Admin/AllocationRequest.php",
+        "app/Http/Requests/School/BudgetVersionRequest.php",
+        "app/Http/Requests/School/OpeningBalanceRequest.php",
+        "routes/web.php",
+        "resources/views/admin/allocations/index.blade.php",
+        "resources/views/school/budget/index.blade.php",
+        "resources/views/school/budget/form.blade.php",
+        "resources/views/school/opening-balance/edit.blade.php",
+        "resources/views/examiner/opening-balances/index.blade.php",
+        "resources/views/components/pm/sidebar.blade.php",
+        "database/factories/AllocationFactory.php",
+        "database/factories/MonthlyReportFactory.php",
+        "tests/Feature/Budget/AllocationTest.php",
+        "tests/Feature/Budget/BudgetVersionTest.php",
+        "tests/Feature/Budget/OpeningBalanceTest.php",
+        "tests/Feature/Budget/BudgetAccessTest.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi",
+          "mulai": "2026-10-22T22:25:48+08:00",
+          "selesai": "2026-10-22T22:25:49+08:00",
+          "detik": 2,
+          "tok_est": 4575,
+          "muat": [
+            "docs/07_DATA_MODEL.md",
+            "database/migrations/2026_10_24_100000_create_budget_tables.php",
+            "database/migrations/2026_10_24_100100_create_monthly_reports_table.php"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Model + Policy",
+          "mulai": "2026-10-22T22:25:58+08:00",
+          "selesai": "2026-10-22T22:26:23+08:00",
+          "detik": 25,
+          "tok_est": 0,
+          "muat": [
+            "app/Models",
+            "app/Policies",
+            "database/factories"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Endpoint/controller/rute",
+          "mulai": "2026-10-22T22:30:11+08:00",
+          "selesai": "2026-10-22T22:30:56+08:00",
+          "detik": 45,
+          "tok_est": 4194,
+          "muat": [
+            "routes/web.php",
+            "resources/views/layouts/app.blade.php",
+            "app/Http/Controllers/Admin/AllocationController.php",
+            "app/Http/Controllers/School/BudgetController.php"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "UI + empat state",
+          "mulai": "2026-10-22T22:30:59+08:00",
+          "selesai": "2026-10-22T22:31:47+08:00",
+          "detik": 48,
+          "tok_est": 5802,
+          "muat": [
+            "resources/views/admin/allocations/index.blade.php",
+            "resources/views/school/budget/index.blade.php",
+            "resources/views/school/budget/form.blade.php",
+            "resources/views/school/opening-balance/index.blade.php",
+            "resources/views/examiner/opening-balances/index.blade.php"
+          ]
+        },
+        {
+          "no": 5,
+          "nama": "Tes",
+          "mulai": "2026-10-22T22:31:53+08:00",
+          "selesai": "2026-10-22T22:33:06+08:00",
+          "detik": 74,
+          "tok_est": 250,
+          "muat": [
+            "tests/Feature/Budget",
+            "tests/Unit/Support/MoneyTest.php"
+          ]
+        },
+        {
+          "no": 6,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-22T22:33:06+08:00",
+          "selesai": "2026-10-22T22:48:39+08:00",
+          "detik": 934,
+          "tok_est": 163,
+          "muat": [
+            "docs/_archive/23-F-04.md"
+          ]
+        }
+      ],
+      "detik": 1128,
+      "tok_est": 14984,
+      "deviasi": [
+        "layouts/app.blade.php (menu + toast warning) dipakai menggantikan components/pm/sidebar.blade.php — menu didefinisikan di layout",
+        "app/Support/Money.php + tests/Unit/Support/MoneyTest.php — penguraian/format uang Indonesia dibutuhkan CLAUDE.md, belum ada",
+        "app/Models/FiscalYear.php::resolve() — pemilihan tahun default di tiga halaman",
+        "resources/views/school/opening-balance/index.blade.php menggantikan edit.blade.php (satu form per sumber dana)",
+        "app/Models/Allocation,OpeningBalance,BudgetVersion,BudgetLine,MonthlyReport diberi LogsActivity sesuai docs/15",
+        "tidak ada commit: direktori bukan repo git"
+      ],
+      "asumsi": [
+        "Batas peringatan pagu memakai pagu + saldo awal DANA saja (tanpa saldo pajak); docs/06 §B hanya menyebut 'saldo awal tahun'",
+        "Versi RKAS berlaku per bulan = versi dengan effective_date <= hari terakhir bulan (docs/04 §agregasi)",
+        "Saldo awal manual terkunci setelah diverifikasi pemeriksa; koreksi lewat mekanisme lain belum ada",
+        "Semua saldo awal yang diisi operator berasal 'manual'; pembeda tahun pertama vs carry-over menunggu F-15"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-04 diarsipkan), docs/_archive/23-F-04.md"
+      ],
+      "ditunda": [
+        "Guard transisi selesai_diperiksa untuk Januari (OpeningBalance::blocksJanuaryCompletion) — F-07",
+        "Unggah PDF RKAS disahkan/perubahan (dokumen periodik 'rkas') — Fase 3 F-06",
+        "Verifikasi saldo awal belum membedakan laporan Januari tanpa baris opening_balances sama sekali — putuskan di F-07",
+        "Peringatan pagu hanya tampil di halaman RKAS setelah simpan; belum di dasbor (F-10)"
+      ],
+      "selesai": "2026-10-22T22:48:40+08:00"
+    },
+    {
+      "fitur": "F-05 Laporan bulanan",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T23:13:23+08:00",
+      "rencana": [
+        "database/migrations/2026_10_25_100000_create_report_lines_tables.php",
+        "app/Enums/AdjustmentKind.php",
+        "app/Models/ReportExpenseLine.php",
+        "app/Models/ReportAdjustment.php",
+        "app/Models/MonthlyReport.php",
+        "database/factories/ReportExpenseLineFactory.php",
+        "app/Services/ReportBalanceCalculator.php",
+        "app/Services/ReportSubmissionValidator.php",
+        "app/Actions/Reports/SaveReportFigures.php",
+        "app/Policies/MonthlyReportPolicy.php",
+        "app/Http/Controllers/School/ReportController.php",
+        "app/Http/Requests/School/ReportFiguresRequest.php",
+        "routes/web.php",
+        "resources/views/layouts/app.blade.php",
+        "resources/views/school/reports/index.blade.php",
+        "resources/views/school/reports/edit.blade.php",
+        "resources/js/app.js",
+        "tests/Unit/Services/ReportBalanceCalculatorTest.php",
+        "tests/Unit/Services/GoldenFebruaryTest.php",
+        "tests/Feature/Report/MonthlyReportTest.php",
+        "tests/Feature/Report/ReportSubmissionValidatorTest.php",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "docs/03_ROADMAP.md"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi",
+          "mulai": "2026-10-22T23:13:23+08:00",
+          "selesai": "2026-10-22T23:13:53+08:00",
+          "detik": 31,
+          "tok_est": 0,
+          "muat": [
+            "migration report_lines",
+            " enum",
+            " 2 model",
+            " MonthlyReport"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Service/logika domain",
+          "mulai": "2026-10-22T23:13:53+08:00",
+          "selesai": "2026-10-22T23:14:19+08:00",
+          "detik": 27,
+          "tok_est": 3509,
+          "muat": [
+            "app/Services/ReportBalanceCalculator.php",
+            "app/Actions/Reports/SaveReportFigures.php",
+            "app/Services/ReportSubmissionValidator.php"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Endpoint/controller/rute",
+          "mulai": "2026-10-22T23:15:02+08:00",
+          "selesai": "2026-10-22T23:15:42+08:00",
+          "detik": 40,
+          "tok_est": 0,
+          "muat": [
+            "controller",
+            " routes",
+            " views",
+            " status-badge",
+            " layout"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "UI dan tes",
+          "mulai": "2026-10-22T23:15:42+08:00",
+          "selesai": "2026-10-22T23:17:02+08:00",
+          "detik": 81,
+          "tok_est": 5884,
+          "muat": [
+            "tests/Feature/Report/MonthlyReportTest.php",
+            "tests/Feature/Report/ReportSubmissionValidatorTest.php",
+            "resources/views/school/reports/edit.blade.php"
+          ]
+        }
+      ],
+      "detik": 179,
+      "tok_est": 9393,
+      "deviasi": [
+        "app/Services/RemainingBudgetCalculator.php, resources/views/components/pm/status-badge.blade.php, tests tambahan di luar rencana — disetujui implisit: sisa anggaran (kriteria UI F-05) dan status-badge (inventaris docs/26)",
+        "Rencana tertulis 'Actions/Reports/SaveReportFigures' memuat juga recompute rantai (tidak ada berkas terpisah)"
+      ],
+      "warn_dilewati": [
+        "S1 manual: butir F-05 dibuktikan lewat tes (golden, berantai, parse, nihil, lock_version)",
+        "S6: konvensi diperiksa manual"
+      ],
+      "asumsi": [
+        "Validasi pengajuan (neto kumulatif<0, catatan selisih, BKU wajib, M-1 diajukan) dibangun sebagai ReportSubmissionValidator di F-05; transisi status tetap F-07",
+        "Laporan nihil menolkan penerimaan dan rincian belanja, bukan pajak/penyetoran",
+        "Bulan pertama aktif mengambil opening dari opening_balances (0 bila belum diisi)",
+        "Saldo awal bulan diturunkan dari hitung ulang bulan M-1, bukan dari cache computed_*"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-05 diarsipkan)"
+      ],
+      "ditunda": [
+        "UI input penyesuaian (report_adjustments sudah ada tabel+kalkulator)",
+        "Pratinjau Alpine.js (BigInt sen)",
+        "Persetujuan kepsek membatalkan saat angka berubah (F-07)",
+        "Command simanabos:recompute (Fase 8)"
+      ],
+      "selesai": "2026-10-22T23:17:37+08:00"
+    },
+    {
+      "fitur": "F-06 Dokumen PDF (+F-02 jenis & aturan dokumen)",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T23:27:41+08:00",
+      "rencana": [
+        "database/migrations/2026_10_26_100000_create_document_tables.php",
+        "config/simanabos.php",
+        "config/filesystems.php",
+        ".env.example",
+        "app/Enums/ReportKind.php",
+        "app/Models/DocumentType.php",
+        "app/Models/DocumentRequirement.php",
+        "app/Models/Document.php",
+        "app/Models/DocumentVersion.php",
+        "app/Models/MonthlyReport.php",
+        "app/Models/FiscalYear.php",
+        "database/seeders/DocumentTypeSeeder.php",
+        "database/seeders/DatabaseSeeder.php",
+        "app/Actions/Documents/UploadDocument.php",
+        "app/Actions/Documents/ReplaceDocument.php",
+        "app/Actions/Documents/TagDocument.php",
+        "app/Actions/Documents/DeleteDocument.php",
+        "app/Actions/FiscalYears/CopyDocumentRequirements.php",
+        "app/Services/DocumentCompletenessChecker.php",
+        "app/Services/ReportSubmissionValidator.php",
+        "app/Policies/DocumentPolicy.php",
+        "app/Policies/DocumentRequirementPolicy.php",
+        "app/Http/Controllers/School/DocumentController.php",
+        "app/Http/Controllers/DocumentDownloadController.php",
+        "app/Http/Controllers/Admin/DocumentRequirementController.php",
+        "app/Http/Controllers/School/ReportController.php",
+        "app/Http/Requests/School/UploadDocumentRequest.php",
+        "app/Http/Requests/School/ReplaceDocumentRequest.php",
+        "app/Http/Requests/School/TagDocumentRequest.php",
+        "app/Http/Requests/Admin/DocumentRequirementRequest.php",
+        "routes/web.php",
+        "resources/views/school/reports/edit.blade.php",
+        "resources/views/school/reports/documents.blade.php",
+        "resources/views/admin/document-requirements/index.blade.php",
+        "resources/views/admin/fiscal-years/show.blade.php",
+        "tests/Feature/Document/DocumentUploadTest.php",
+        "tests/Feature/Document/DocumentAccessTest.php",
+        "tests/Feature/Document/DocumentRequirementTest.php",
+        "tests/Feature/Document/DocumentCompletenessTest.php",
+        "tests/Feature/Report/ReportSubmissionValidatorTest.php",
+        "lang/id/validation.php",
+        "app/Models/Scopes/SchoolScope.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi",
+          "mulai": "2026-10-22T23:27:42+08:00",
+          "selesai": "2026-10-22T23:28:26+08:00",
+          "detik": 44,
+          "tok_est": 0,
+          "muat": [
+            "migrasi",
+            " config",
+            " models",
+            " seeder"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Tes",
+          "mulai": "2026-10-22T23:31:47+08:00",
+          "selesai": "2026-10-22T23:33:05+08:00",
+          "detik": 78,
+          "tok_est": 0,
+          "muat": [
+            "tests/Feature/Document"
+          ]
+        }
+      ],
+      "detik": 122,
+      "tok_est": 0,
+      "deviasi": [
+        "Tidak ada"
+      ],
+      "warn_dilewati": [
+        "S6: konvensi 12 diperiksa manual (Actions/Documents, Services/DocumentCompletenessChecker, DocumentDownloadController sesuai pohon docs/12)"
+      ],
+      "asumsi": [
+        "Matriks dokumen wajib [TERBUKA] -> aturan 100% diisi admin per tahun; tanpa aturan kelengkapan dianggap lengkap",
+        "Unggah satu berkas per aksi; 'banyak' = beberapa dokumen per laporan",
+        "Dokumen terhapus (soft delete) tidak bisa diunduh lagi, versi & berkas fisik dipertahankan",
+        "Hash duplikat dibandingkan lintas laporan lain sekolah yang sama, bukan laporan yang sama"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-06 diarsip)"
+      ],
+      "ditunda": [
+        "Dokumen RKAS/periodik (F-09)",
+        "Pemanggilan validator saat ajukan (F-07)",
+        "Roadmap tidak punya kolom status; tidak diubah"
+      ],
+      "selesai": "2026-10-22T23:34:04+08:00"
+    },
+    {
+      "fitur": "F-07 Pengajuan dan pemeriksaan",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-22T23:56:16+08:00",
+      "rencana": [
+        "database/migrations/2026_10_27_100000_create_review_tables.php",
+        "app/Models/StatusHistory.php",
+        "app/Models/ReviewNote.php",
+        "app/Models/AppSetting.php",
+        "app/Models/MonthlyReport.php",
+        "app/Exceptions/DomainRuleException.php",
+        "app/Exceptions/InvalidTransitionException.php",
+        "app/Services/ReportStateMachine.php",
+        "app/Actions/Reports/SubmitReport.php",
+        "app/Actions/Reports/WithdrawReport.php",
+        "app/Actions/Reports/StartReview.php",
+        "app/Actions/Reports/ReleaseReview.php",
+        "app/Actions/Reports/RequestRevision.php",
+        "app/Actions/Reports/CompleteReview.php",
+        "app/Actions/Reports/UnlockReport.php",
+        "app/Actions/Reports/ApproveByPrincipal.php",
+        "app/Actions/Reports/RespondToNote.php",
+        "app/Actions/Reports/ResolveNote.php",
+        "app/Actions/Reports/SaveReportFigures.php",
+        "app/Policies/MonthlyReportPolicy.php",
+        "app/Policies/ReviewNotePolicy.php",
+        "app/Http/Controllers/School/ReportController.php",
+        "app/Http/Controllers/School/ReportSubmissionController.php",
+        "app/Http/Controllers/Review/ReviewController.php",
+        "app/Http/Requests/Review/*",
+        "routes/web.php",
+        "bootstrap/app.php",
+        "lang/id/domain.php",
+        "resources/views/review/*",
+        "resources/views/school/reports/edit.blade.php",
+        "resources/views/components/pm/sidebar.blade.php",
+        "resources/views/layouts/app.blade.php",
+        "database/factories/*",
+        "tests/Feature/Report/*",
+        "tests/Unit/Services/ReportStateMachineTest.php",
+        "docs/*"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Skema/migrasi",
+          "mulai": "2026-10-22T23:56:17+08:00",
+          "selesai": "2026-10-22T23:56:42+08:00",
+          "detik": 25,
+          "tok_est": 0,
+          "muat": [
+            "migrations",
+            "models",
+            "exceptions"
+          ]
+        }
+      ],
+      "detik": 25,
+      "tok_est": 0,
+      "deviasi": [
+        "Route/namespace review.* (prefix /pemeriksaan) memakai Http/Controllers/Review sesuai docs/12; modul pemeriksa lama tetap examiner.*",
+        "badge tone accent dan prop multiline pada x-pm.text-field ditambah (ada di inventaris 26 tapi belum diimplementasikan)",
+        "app/Http/Requests/School/RespondNoteRequest.php, resources/views/school/reports/review.blade.php, AddReviewNote — berkas di luar daftar rencana awal"
+      ],
+      "asumsi": [
+        "Pemeriksa melihat semua sekolah dan require_principal_approval=false (default 07/MANIFEST); UI pengaturan flag belum ada, diubah lewat AppSetting::put",
+        "Konflik lock_version dengan status sama dilaporkan sebagai DomainRuleException; status berubah sebagai InvalidTransitionException"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23_ACCEPTANCE_CRITERIA.md (F-07 diarsipkan ke docs/_archive/23-F-07.md)"
+      ],
+      "ditunda": [
+        "UI buka kunci admin dan needs_rereview end-to-end (F-08)",
+        "UI pengaturan require_principal_approval",
+        "Uji identity_snapshot dengan pergantian bendahara"
+      ],
+      "selesai": "2026-10-23T00:02:15+08:00"
+    }
+  ],
+  "akumulasi": {
+    "detik": 2901,
+    "tok_est": 65144,
+    "tok_terukur": 0,
+    "step": 31,
+    "fitur": 9
+  }
+}
