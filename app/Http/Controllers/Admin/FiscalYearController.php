@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OpenFiscalYearRequest;
 use App\Http\Requests\Admin\StoreStageRequest;
 use App\Http\Requests\Admin\UpdateDeadlinesRequest;
+use App\Models\AppSetting;
 use App\Models\FiscalYear;
 use App\Models\FiscalYearStage;
 use Illuminate\Contracts\View\View;
@@ -26,7 +27,7 @@ class FiscalYearController extends Controller
     {
         Gate::authorize('create', FiscalYear::class);
 
-        return view('admin.fiscal-years.create', ['defaultYear' => (int) now()->year]);
+        return view('admin.fiscal-years.create', ['defaultYear' => (int) now()->year, 'defaultDeadlineDay' => AppSetting::defaultDeadlineDay()]);
     }
 
     public function store(OpenFiscalYearRequest $request, OpenFiscalYear $openFiscalYear): RedirectResponse

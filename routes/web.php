@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordChangeController;
 use App\Http\Controllers\DocumentDownloadController;
 use App\Http\Controllers\Examiner\OpeningBalanceController as ExaminerOpeningBalanceController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Review\ReviewController;
 use App\Http\Controllers\School\BudgetController;
 use App\Http\Controllers\School\DocumentController;
@@ -40,6 +41,8 @@ Route::middleware(['auth', 'active'])->group(function () {
 
     Route::middleware('must.change.password')->group(function () {
         Route::view('/beranda', 'home')->name('home');
+        Route::get('/notifikasi', [NotificationController::class, 'index'])->name('notifications.index');
+        Route::post('/notifikasi/baca-semua', [NotificationController::class, 'markAllRead'])->name('notifications.read-all');
 
         Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('settings', [AppSettingController::class, 'edit'])->name('settings.index');

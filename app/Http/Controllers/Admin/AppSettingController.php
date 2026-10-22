@@ -15,19 +15,29 @@ class AppSettingController extends Controller
     {
         Gate::authorize('viewAny', AppSetting::class);
 
-        return view('admin.settings.edit', ['requirePrincipalApproval' => AppSetting::requiresPrincipalApproval()]);
+        return view('admin.settings.edit', [
+            'requirePrincipalApproval' => AppSetting::requiresPrincipalApproval(),
+            'defaultDeadlineDay' => AppSetting::defaultDeadlineDay(),
+            'reminderDaysBefore' => AppSetting::reminderDaysBefore(),
+        ]);
     }
 
     public function update(AppSettingRequest $request): RedirectResponse
     {
-        $old = AppSetting::requiresPrincipalApproval();
-        $new = $request->boolean('require_principal_approval');
-        AppSetting::put('require_principal_approval', $new);
+        $changes = [
+            'require_principal_approval' => [AppSetting::requiresPrincipalApproval(), $request->boolean('require_principal_approval')],
+            'default_deadline_day' => [AppSetting::defaultDeadlineDay(), (int) $request->validated('default_deadline_day')],
+            'reminder_days_before' => [AppSetting::reminderDaysBefore(), (int) $request->validated('reminder_days_before')],
+        ];
 
-        if ($old !== $new) {
-            activity()->causedBy($request->user())
-                ->withProperties(['key' => 'require_principal_approval', 'old' => $old, 'attributes' => $new])
-                ->log('Pengaturan diubah');
+        foreach ($changes as $key => [$old, $new]) {
+            AppSetting::put($key, $new);
+
+            if ($old !== $new) {
+                activity()->causedBy($request->user())
+                    ->withProperties(['key' => $key, 'old' => $old, 'attributes' => $new])
+                    ->log('Pengaturan diubah');
+            }
         }
 
         return redirect()->route('admin.settings.index')->with('success', 'Pengaturan tersimpan.');

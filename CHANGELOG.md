@@ -6,6 +6,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/) dan ve
 
 ### Ditambahkan
 - **F-08 Penguncian periode**: admin dinas membuka kunci laporan selesai dari layar pemeriksaan dengan alasan wajib (ditolak bila tahun ditutup); `needs_rereview` pada bulan sesudahnya yang selesai.
+- **F-12 Tenggat dan pengingat**: penjadwal harian `simanabos:process-deadlines` (00.30 WITA) mengirim pengingat H-N ke operator untuk laporan draf dan menandai `is_late` + notifikasi ke operator dan kepala sekolah pada H+1; halaman dan lonceng notifikasi; tanggal tenggat bawaan dan jumlah hari pengingat dapat diatur admin di Pengaturan Aplikasi.
 
 ### Direncanakan
 - Fase 5–8: dokumen periodik, dasbor kabupaten, daftar perhatian, tenggat dan pengingat, rekap dan ekspor XLSX, tutup tahun, pengerasan dan rilis.

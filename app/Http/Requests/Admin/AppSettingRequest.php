@@ -15,6 +15,10 @@ class AppSettingRequest extends FormRequest
     /** @return array<string, array<int, mixed>> */
     public function rules(): array
     {
-        return ['require_principal_approval' => ['required', 'boolean']];
+        return [
+            'require_principal_approval' => ['required', 'boolean'],
+            'default_deadline_day' => ['required', 'integer', 'between:1,28'],
+            'reminder_days_before' => ['required', 'integer', 'between:1,14'],
+        ];
     }
 }

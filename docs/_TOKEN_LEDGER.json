@@ -124,6 +124,16 @@
       "chars": 31587,
       "cpt": 3.5,
       "est_tokens": 9025
+    },
+    {
+      "ts": "2026-10-23T00:40:22+08:00",
+      "type": "task",
+      "task": "F-12 Tenggat dan pengingat",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 31345,
+      "cpt": 3.5,
+      "est_tokens": 8956
     }
   ],
   "measured_sessions": {}

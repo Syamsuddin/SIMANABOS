@@ -30,4 +30,16 @@ class AppSetting extends Model
     {
         return (bool) static::get('require_principal_approval', false);
     }
+
+    /** Tanggal tenggat bawaan saat tahun anggaran baru dibuka (docs/06 §A). */
+    public static function defaultDeadlineDay(): int
+    {
+        return (int) static::get('default_deadline_day', 10);
+    }
+
+    /** Jumlah hari sebelum tenggat saat pengingat dikirim (docs/06 §H). */
+    public static function reminderDaysBefore(): int
+    {
+        return (int) static::get('reminder_days_before', 3);
+    }
 }

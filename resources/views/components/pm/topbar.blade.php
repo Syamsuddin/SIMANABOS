@@ -3,6 +3,11 @@
     <x-pm.icon-button label="Buka menu" icon="menu" class="nav:hidden" @click="drawer = ! drawer" />
 
     <div class="ml-auto flex items-center gap-2">
+        @php($unread = $user->unreadNotifications()->count())
+        <a href="{{ route('notifications.index') }}" class="relative inline-flex h-9 w-9 items-center justify-center rounded-md text-ink-muted hover:bg-surface-sunken" aria-label="Notifikasi{{ $unread ? ", {$unread} belum dibaca" : '' }}">
+            <x-pm.icon name="bell" :size="20" />
+            @if ($unread)<span class="absolute -right-0.5 -top-0.5 min-w-4 rounded-full bg-danger px-1 text-center text-caption font-semibold text-white">{{ $unread > 99 ? '99+' : $unread }}</span>@endif
+        </a>
         <div class="hidden text-right leading-snug nav:grid">
             <strong class="text-small font-semibold text-ink">{{ $user->name }}</strong>
             <span class="text-caption font-normal text-ink-muted">{{ $user->getRoleNames()->map(fn ($role) => \App\Enums\RoleName::tryFrom($role)?->label() ?? $role)->implode(', ') }}</span>

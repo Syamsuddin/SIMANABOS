@@ -45,9 +45,7 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Verifikasi: `php artisan test --filter=Attention` → hijau.
 
 ## F-12 Tenggat dan pengingat
-- Given hari ini (WITA) = due_date − 3 dan laporan draf, Then notifikasi terkirim sekali.
-- Given hari ini = due_date + 1 dan masih draf, Then `is_late=true` dan notifikasi ke operator dan kepsek.
-- Verifikasi: `php artisan test --filter=Deadline` → hijau (pakai `Carbon::setTestNow`).
+- Diarsipkan di `docs/_archive/23-F-12.md`.
 
 ## F-13 Rekap dan ekspor
 - Rekap triwulan III: penerimaan = Σ Jul–Sep; saldo = posisi September.

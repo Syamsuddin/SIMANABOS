@@ -1104,6 +1104,44 @@
         "Tenggat bulanan memakai nilai default F-02; pengaturan tanggal dibuat di slice Fase 5"
       ],
       "selesai": "2026-10-23T00:37:40+08:00"
+    },
+    {
+      "fitur": "F-12 Tenggat dan pengingat",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T00:38:29+08:00",
+      "rencana": [
+        "app/Models/AppSetting.php",
+        "app/Http/Requests/Admin/AppSettingRequest.php",
+        "app/Http/Controllers/Admin/AppSettingController.php",
+        "app/Http/Controllers/Admin/FiscalYearController.php",
+        "resources/views/admin/settings/edit.blade.php",
+        "resources/views/admin/fiscal-years/create.blade.php",
+        "app/Actions/Deadlines/ProcessDeadlines.php",
+        "app/Notifications/ReportDueSoon.php",
+        "app/Notifications/ReportOverdue.php",
+        "app/Console/Commands/ProcessDeadlinesCommand.php",
+        "routes/console.php",
+        "routes/web.php",
+        "app/Http/Controllers/NotificationController.php",
+        "resources/views/notifications/index.blade.php",
+        "resources/views/components/pm/topbar.blade.php",
+        "database/migrations",
+        "tests/Feature/Deadline/DeadlineTest.php",
+        "tests/Feature/Report/AppSettingTest.php",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [],
+      "detik": 0,
+      "tok_est": 0,
+      "asumsi": [
+        "Pengingat dan penanda terlambat hanya untuk laporan berstatus draf (docs/06 §H); penerima = pengguna aktif sekolah berrole operator/kepsek"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (F-12 diarsipkan)"
+      ],
+      "selesai": "2026-10-23T00:40:22+08:00"
     }
   ],
   "akumulasi": {
@@ -1111,6 +1149,6 @@
     "tok_est": 65144,
     "tok_terukur": 0,
     "step": 31,
-    "fitur": 11
+    "fitur": 12
   }
 }
