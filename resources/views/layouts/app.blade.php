@@ -6,7 +6,7 @@
             'title' => $isSchoolUser ? 'Sekolah' : 'Utama',
             'items' => [
                 ['label' => 'Beranda', 'icon' => 'home', 'route' => 'home'],
-                ...(! $isSchoolUser ? [['label' => 'Dasbor kabupaten', 'icon' => 'dashboard', 'route' => 'dashboard.*'], ['label' => 'Daftar perhatian', 'icon' => 'alert', 'route' => 'attention.*']] : []),
+                ...(! $isSchoolUser ? [['label' => 'Dasbor kabupaten', 'icon' => 'dashboard', 'route' => 'dashboard.*'], ['label' => 'Daftar perhatian', 'icon' => 'alert', 'route' => 'attention.*'], ['label' => 'Laporan periodik', 'icon' => 'file-text', 'route' => 'periodic.*']] : []),
             ],
         ],
         ...($user->hasRole(\App\Enums\RoleName::AdminDinas->value) ? [[
@@ -32,6 +32,7 @@
                 ['label' => 'RKAS', 'icon' => 'wallet', 'route' => 'school.budget.*'],
                 ['label' => 'Saldo awal', 'icon' => 'wallet', 'route' => 'school.opening-balance.*'],
                 ['label' => 'Laporan bulanan', 'icon' => 'file-text', 'route' => 'school.reports.*'],
+                ['label' => 'Laporan periodik', 'icon' => 'file-text', 'route' => 'school.periodic.*'],
             ],
         ]] : []),
         [

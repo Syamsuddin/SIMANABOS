@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Enums\RoleName;
 use App\Models\Document;
 use App\Models\MonthlyReport;
+use App\Models\PeriodicReport;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -19,7 +20,7 @@ class DocumentPolicy
         }
 
         $isDinas = $user->hasAnyRole([RoleName::AdminDinas->value, RoleName::PemeriksaDinas->value, RoleName::PimpinanDinas->value]);
-        $isOwnSchool = $user->isSchoolUser() && $owner instanceof MonthlyReport && $owner->school_id === $user->school_id;
+        $isOwnSchool = $user->isSchoolUser() && ($owner instanceof MonthlyReport || $owner instanceof PeriodicReport) && $owner->school_id === $user->school_id;
 
         return $isDinas || $isOwnSchool ? true : Response::denyAsNotFound();
     }
@@ -29,12 +30,14 @@ class DocumentPolicy
     {
         $owner = $document->documentable;
 
-        return $owner instanceof MonthlyReport && $user->can('update', $owner);
+        return ($owner instanceof MonthlyReport || $owner instanceof PeriodicReport) && $user->can('update', $owner);
     }
 
     /** Hapus hanya sebelum pengajuan pertama (docs/07 documents.deleted_at). */
     public function delete(User $user, Document $document): bool
     {
-        return $this->manage($user, $document) && $document->documentable->submitted_at === null;
+        // Laporan periodik tidak punya alur pengajuan, jadi dokumennya boleh dihapus selama tahun terbuka.
+        return $this->manage($user, $document)
+            && ($document->documentable instanceof PeriodicReport || $document->documentable->submitted_at === null);
     }
 }

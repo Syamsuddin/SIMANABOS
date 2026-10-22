@@ -21,6 +21,8 @@ use App\Http\Controllers\Review\ReviewController;
 use App\Http\Controllers\School\BudgetController;
 use App\Http\Controllers\School\DocumentController;
 use App\Http\Controllers\School\OpeningBalanceController;
+use App\Http\Controllers\School\PeriodicDocumentController;
+use App\Http\Controllers\School\PeriodicReportController;
 use App\Http\Controllers\School\ProfileController;
 use App\Http\Controllers\School\ReportController;
 use App\Http\Controllers\School\ReportSubmissionController;
@@ -45,6 +47,7 @@ Route::middleware(['auth', 'active'])->group(function () {
         Route::view('/beranda', 'home')->name('home');
         Route::get('/dasbor', [DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/perhatian', [AttentionController::class, 'index'])->name('attention.index');
+        Route::get('/periodik', [PeriodicReportController::class, 'index'])->name('periodic.index');
         Route::get('/notifikasi', [NotificationController::class, 'index'])->name('notifications.index');
         Route::post('/notifikasi/baca-semua', [NotificationController::class, 'markAllRead'])->name('notifications.read-all');
 
@@ -98,6 +101,14 @@ Route::middleware(['auth', 'active'])->group(function () {
             Route::post('/laporan/{report}/tarik', [ReportSubmissionController::class, 'withdraw'])->name('reports.withdraw');
             Route::post('/laporan/{report}/setujui', [ReportSubmissionController::class, 'approve'])->name('reports.approve');
             Route::put('/laporan/{report}/catatan/{note}', [ReportSubmissionController::class, 'respond'])->name('reports.notes.respond');
+
+            Route::get('/periodik', [PeriodicReportController::class, 'index'])->name('periodic.index');
+            Route::put('/periodik', [PeriodicReportController::class, 'update'])->name('periodic.update');
+            Route::scopeBindings()->group(function () {
+                Route::post('/periodik/{periodic}/dokumen', [PeriodicDocumentController::class, 'store'])->name('periodic.documents.store');
+                Route::post('/periodik/{periodic}/dokumen/{document}/ganti', [PeriodicDocumentController::class, 'replace'])->name('periodic.documents.replace');
+                Route::delete('/periodik/{periodic}/dokumen/{document}', [PeriodicDocumentController::class, 'destroy'])->name('periodic.documents.destroy');
+            });
 
             Route::scopeBindings()->group(function () {
                 Route::post('/laporan/{report}/dokumen', [DocumentController::class, 'store'])->name('reports.documents.store');

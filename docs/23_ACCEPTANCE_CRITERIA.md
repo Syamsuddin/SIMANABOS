@@ -30,9 +30,7 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Diarsipkan di `docs/_archive/23-F-08.md`.
 
 ## F-09 Dokumen periodik
-- Given Tahap I = Jan–Jun dan `reported_total_realization` diisi, Then selisih terhadap Σ realisasi neto Jan–Jun ditampilkan.
-- Angka periodik tidak mengubah realisasi bulanan atau dasbor.
-- Verifikasi: `php artisan test --filter=Periodic` → hijau.
+- Diarsipkan di `docs/_archive/23-F-09.md`.
 
 ## F-10 Dasbor kabupaten
 - Diarsipkan di `docs/_archive/23-F-10.md`.

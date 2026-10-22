@@ -17,7 +17,7 @@ class ReportAggregator
 {
     private const RECEIPT = 'coalesce(r.receipt_bos, 0) + coalesce(r.receipt_other, 0)';
 
-    private const NET_REALIZATION = '(select coalesce(sum(l.gross_amount - l.refund_amount), 0) from report_expense_lines l where l.monthly_report_id = r.id)'
+    public const NET_REALIZATION = '(select coalesce(sum(l.gross_amount - l.refund_amount), 0) from report_expense_lines l where l.monthly_report_id = r.id)'
         .' + (select coalesce(sum(a.amount), 0) from report_adjustments a where a.monthly_report_id = r.id and a.kind = \'realisasi\')';
 
     /**

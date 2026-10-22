@@ -5,19 +5,20 @@ namespace App\Actions\Documents;
 use App\Models\Document;
 use App\Models\DocumentVersion;
 use App\Models\MonthlyReport;
+use App\Models\PeriodicReport;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-/** Mengunggah PDF baru ke laporan bulanan sebagai dokumen versi 1 (docs/07 §Dokumen). */
+/** Mengunggah PDF baru ke laporan bulanan atau periodik sebagai dokumen versi 1 (docs/07 §Dokumen). */
 class UploadDocument
 {
     /**
      * @param  list<int>  $typeIds
      * @return array{document: Document, duplicate: bool}
      */
-    public function __invoke(MonthlyReport $report, UploadedFile $file, User $user, array $typeIds): array
+    public function __invoke(MonthlyReport|PeriodicReport $report, UploadedFile $file, User $user, array $typeIds): array
     {
         $stored = $this->store($report, $file);
 
@@ -38,7 +39,7 @@ class UploadDocument
      *
      * @return array{storage_path: string, original_name: string, size_bytes: int, sha256: string}
      */
-    public function store(MonthlyReport $report, UploadedFile $file): array
+    public function store(MonthlyReport|PeriodicReport $report, UploadedFile $file): array
     {
         $report->loadMissing(['school', 'fiscalYear']);
         $directory = 'documents/'.$report->fiscalYear->year.'/'.$report->school->npsn;
@@ -53,8 +54,12 @@ class UploadDocument
     }
 
     /** Hash sama sudah ada pada laporan lain milik sekolah yang sama: hanya peringatan (docs/23 F-06). */
-    public function isDuplicate(MonthlyReport $report, string $sha256): bool
+    public function isDuplicate(MonthlyReport|PeriodicReport $report, string $sha256): bool
     {
+        if ($report instanceof PeriodicReport) {
+            return false;
+        }
+
         return DocumentVersion::query()->where('sha256', $sha256)
             ->whereHas('document', fn ($q) => $q->where('documentable_type', $report->getMorphClass())
                 ->whereIn('documentable_id', MonthlyReport::query()->withoutGlobalScopes()

@@ -4,6 +4,7 @@ namespace App\Actions\Documents;
 
 use App\Models\Document;
 use App\Models\MonthlyReport;
+use App\Models\PeriodicReport;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,7 @@ class ReplaceDocument
     public function __construct(private readonly UploadDocument $upload) {}
 
     /** @return array{document: Document, duplicate: bool} */
-    public function __invoke(MonthlyReport $report, Document $document, UploadedFile $file, User $user, ?string $reason): array
+    public function __invoke(MonthlyReport|PeriodicReport $report, Document $document, UploadedFile $file, User $user, ?string $reason): array
     {
         $stored = $this->upload->store($report, $file);
 
