@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentDownloadController;
 use App\Http\Controllers\Examiner\OpeningBalanceController as ExaminerOpeningBalanceController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\RecapController;
 use App\Http\Controllers\Review\ReviewController;
 use App\Http\Controllers\School\BudgetController;
 use App\Http\Controllers\School\DocumentController;
@@ -46,6 +47,8 @@ Route::middleware(['auth', 'active'])->group(function () {
     Route::middleware('must.change.password')->group(function () {
         Route::view('/beranda', 'home')->name('home');
         Route::get('/dasbor', [DashboardController::class, 'index'])->name('dashboard.index');
+        Route::get('/rekap', [RecapController::class, 'index'])->name('recap.index');
+        Route::get('/rekap/ekspor', [RecapController::class, 'export'])->name('recap.export');
         Route::get('/perhatian', [AttentionController::class, 'index'])->name('attention.index');
         Route::get('/periodik', [PeriodicReportController::class, 'index'])->name('periodic.index');
         Route::get('/notifikasi', [NotificationController::class, 'index'])->name('notifications.index');

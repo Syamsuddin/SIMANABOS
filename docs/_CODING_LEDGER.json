@@ -50,14 +50,21 @@
       "step": 0,
       "detik": 0,
       "tok_est": 0
+    },
+    {
+      "mulai": "2026-10-23T00:57:55+08:00",
+      "selesai": null,
+      "step": 0,
+      "detik": 0,
+      "tok_est": 0
     }
   ],
   "step_berjalan": null,
   "blueprint": {
     "sidik_awal": "0e5a72e32151f359",
-    "sidik": "04cb56e6bfa84784",
+    "sidik": "e43ade97d6209d0b",
     "dokumen": 27,
-    "disegel": "2026-10-23T00:24:27+08:00",
+    "disegel": "2026-10-23T00:57:55+08:00",
     "riwayat": [
       {
         "dari": "0e5a72e32151f359",
@@ -88,9 +95,14 @@
         "dari": "c9309aad90a1f44d",
         "ke": "04cb56e6bfa84784",
         "pada": "2026-10-23T00:24:27+08:00"
+      },
+      {
+        "dari": "04cb56e6bfa84784",
+        "ke": "e43ade97d6209d0b",
+        "pada": "2026-10-23T00:57:55+08:00"
       }
     ],
-    "sidik_sebelumnya": "c9309aad90a1f44d"
+    "sidik_sebelumnya": "04cb56e6bfa84784"
   },
   "riwayat_fitur": [
     {
@@ -1208,5 +1220,30 @@
     "tok_terukur": 0,
     "step": 31,
     "fitur": 14
+  },
+  "fitur_aktif": {
+    "fitur": "F-13 Rekap dan ekspor",
+    "rute": "Fitur baru (vertical slice)",
+    "mulai": "2026-10-23T00:58:42+08:00",
+    "rencana": [
+      "composer.json",
+      "composer.lock",
+      "app/Enums/RecapPeriod.php",
+      "app/Services/RecapBuilder.php",
+      "app/Services/RecapXlsxWriter.php",
+      "app/Http/Requests/RecapFilterRequest.php",
+      "app/Http/Controllers/RecapController.php",
+      "routes/web.php",
+      "resources/views/recap/index.blade.php",
+      "resources/views/layouts/app.blade.php",
+      "tests/Feature/Recap/ExportTest.php",
+      "docs/23_ACCEPTANCE_CRITERIA.md",
+      "docs/_archive/23-F-13.md",
+      "docs/03_ROADMAP.md"
+    ],
+    "total_step": 0,
+    "step": [],
+    "detik": 0,
+    "tok_est": 0
   }
 }

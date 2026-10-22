@@ -6,7 +6,7 @@
             'title' => $isSchoolUser ? 'Sekolah' : 'Utama',
             'items' => [
                 ['label' => 'Beranda', 'icon' => 'home', 'route' => 'home'],
-                ...(! $isSchoolUser ? [['label' => 'Dasbor kabupaten', 'icon' => 'dashboard', 'route' => 'dashboard.*'], ['label' => 'Daftar perhatian', 'icon' => 'alert', 'route' => 'attention.*'], ['label' => 'Laporan periodik', 'icon' => 'file-text', 'route' => 'periodic.*']] : []),
+                ...(! $isSchoolUser ? [['label' => 'Dasbor kabupaten', 'icon' => 'dashboard', 'route' => 'dashboard.*'], ['label' => 'Daftar perhatian', 'icon' => 'alert', 'route' => 'attention.*'], ['label' => 'Laporan periodik', 'icon' => 'file-text', 'route' => 'periodic.*'], ['label' => 'Rekap', 'icon' => 'file-text', 'route' => 'recap.*']] : []),
             ],
         ],
         ...($user->hasRole(\App\Enums\RoleName::AdminDinas->value) ? [[
