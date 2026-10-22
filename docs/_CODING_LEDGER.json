@@ -1142,6 +1142,36 @@
         "docs/23 (F-12 diarsipkan)"
       ],
       "selesai": "2026-10-23T00:40:22+08:00"
+    },
+    {
+      "fitur": "F-10 Dasbor kabupaten",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T00:41:35+08:00",
+      "rencana": [
+        "app/Services/ReportAggregator.php",
+        "app/Http/Controllers/DashboardController.php",
+        "app/Http/Requests/DashboardFilterRequest.php",
+        "resources/views/dashboard/index.blade.php",
+        "resources/views/components/pm/stat-card.blade.php",
+        "resources/views/components/pm/bar-chart.blade.php",
+        "resources/views/layouts/app.blade.php",
+        "routes/web.php",
+        "tests/Feature/Dashboard/DashboardTest.php",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [],
+      "detik": 0,
+      "tok_est": 0,
+      "asumsi": [
+        "Filter bulan = rentang dari–sampai; saldo diambil dari bulan 'sampai'; laporan 'dihitung' = status selain draf (≥ diajukan)",
+        "Komponen donut-chart tidak dibuat; status laporan ditampilkan sebagai daftar badge+jumlah"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (F-10 diarsipkan)"
+      ],
+      "selesai": "2026-10-23T00:43:03+08:00"
     }
   ],
   "akumulasi": {
@@ -1149,6 +1179,6 @@
     "tok_est": 65144,
     "tok_terukur": 0,
     "step": 31,
-    "fitur": 12
+    "fitur": 13
   }
 }

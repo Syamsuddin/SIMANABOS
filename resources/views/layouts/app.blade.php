@@ -4,7 +4,10 @@
     $menu = [
         [
             'title' => $isSchoolUser ? 'Sekolah' : 'Utama',
-            'items' => [['label' => 'Beranda', 'icon' => 'home', 'route' => 'home']],
+            'items' => [
+                ['label' => 'Beranda', 'icon' => 'home', 'route' => 'home'],
+                ...(! $isSchoolUser ? [['label' => 'Dasbor kabupaten', 'icon' => 'dashboard', 'route' => 'dashboard.*']] : []),
+            ],
         ],
         ...($user->hasRole(\App\Enums\RoleName::AdminDinas->value) ? [[
             'title' => 'Pengaturan',

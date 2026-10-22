@@ -35,10 +35,7 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Verifikasi: `php artisan test --filter=Periodic` → hijau.
 
 ## F-10 Dasbor kabupaten
-- Saldo kabupaten September = Σ `computed_ending_*` laporan September, bukan jumlah antarbulan.
-- Filter jenjang, status, kecamatan, sumber dana, bulan/periode mengubah semua kartu dan grafik secara konsisten.
-- Label "X dari Y laporan" tampil.
-- Verifikasi: `php artisan test --filter=Dashboard` → hijau; buka `/dasbor` sebagai pimpinan → 200.
+- Diarsipkan di `docs/_archive/23-F-10.md`.
 
 ## F-11 Daftar perhatian
 - Setiap pemicu (belum melapor, dokumen kurang, selisih, perbaikan > 14 hari, antrean > 14 hari, tinjau ulang, anggaran > dana, saldo awal belum diverifikasi) menghasilkan baris dengan badge pemicu.
