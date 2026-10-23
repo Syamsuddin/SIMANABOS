@@ -68,9 +68,9 @@
     {
       "mulai": "2026-10-23T09:34:01+08:00",
       "selesai": null,
-      "step": 8,
-      "detik": 787,
-      "tok_est": 27294
+      "step": 10,
+      "detik": 788,
+      "tok_est": 41837
     }
   ],
   "step_berjalan": null,
@@ -1530,10 +1530,70 @@
     }
   ],
   "akumulasi": {
-    "detik": 3808,
-    "tok_est": 92438,
+    "detik": 3809,
+    "tok_est": 106981,
     "tok_terukur": 0,
-    "step": 40,
+    "step": 42,
     "fitur": 18
+  },
+  "fitur_aktif": {
+    "fitur": "Fase 8 Smoke test dan gladi rilis",
+    "rute": "Fitur baru (vertical slice)",
+    "mulai": "2026-10-23T09:53:09+08:00",
+    "rencana": [
+      "tests/Feature/Smoke/SmokeFixtures.php",
+      "tests/Feature/Smoke/PageSmokeTest.php",
+      "CHANGELOG.md",
+      "docs/23_ACCEPTANCE_CRITERIA.md",
+      "docs/_archive/23-F-02.md",
+      "docs/_archive/23-F-03.md",
+      "docs/_archive/23-F-04.md",
+      "docs/_archive/23-F-05.md",
+      "docs/_archive/23-F-06.md",
+      "docs/_archive/23-F-07.md",
+      "docs/_archive/23-F-08.md",
+      "docs/_archive/23-F-09.md",
+      "docs/_archive/23-F-10.md",
+      "docs/_archive/23-F-11.md",
+      "docs/_archive/23-F-12.md",
+      "docs/_archive/23-F-13.md",
+      "tests/Feature/Reference/ExpenseTypeTest.php",
+      "tests/Feature/Report/ReportStateMachineTest.php"
+    ],
+    "total_step": 0,
+    "step": [
+      {
+        "no": 1,
+        "nama": "Tes smoke UI",
+        "mulai": "2026-10-23T09:53:09+08:00",
+        "selesai": "2026-10-23T09:53:10+08:00",
+        "detik": 1,
+        "tok_est": 6777,
+        "muat": [
+          "tests/Feature/Smoke/SmokeFixtures.php",
+          "tests/Feature/Smoke/PageSmokeTest.php",
+          "routes/web.php",
+          "app/Http/Controllers/School/PeriodicReportController.php"
+        ]
+      },
+      {
+        "no": 2,
+        "nama": "Arsip 23 + butir sisa",
+        "mulai": "2026-10-23T09:55:07+08:00",
+        "selesai": "2026-10-23T09:55:07+08:00",
+        "detik": 0,
+        "tok_est": 7766,
+        "muat": [
+          "docs/23_ACCEPTANCE_CRITERIA.md",
+          "docs/_archive/23-F-02.md",
+          "docs/_archive/23-F-03.md",
+          "tests/Feature/Reference/ExpenseTypeTest.php",
+          "tests/Feature/Report/ReportStateMachineTest.php",
+          "CHANGELOG.md"
+        ]
+      }
+    ],
+    "detik": 1,
+    "tok_est": 14543
   }
 }

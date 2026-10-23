@@ -5,6 +5,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/) dan ve
 ## [Unreleased]
 
 ### Ditambahkan
+- **Smoke test**: matriks akses semua halaman GET × lima peran sesuai `docs/05` (termasuk isolasi sekolah lain = 404 dan pengalihan tamu); tes gagal bila ada route GET baru yang belum dipetakan. Butir sisa F-02 (jenis belanja terpakai) dan F-03 (`identity_snapshot` bendahara lama) kini diuji; `docs/23` tidak lagi memuat fitur aktif.
 - **Pengerasan rilis (Fase 8)**: perintah `simanabos:create-admin` (admin pertama, wajib ganti sandi), `simanabos:recompute {npsn} {year}`, dan `simanabos:backup` (dump basis data + arsip PDF, izin 0640, terjadwal 01.30 WITA, retensi 30 hari); header `X-Frame-Options`, `Referrer-Policy`, `X-Content-Type-Options`, dan HSTS (HTTPS); `X-Request-Id` + konteks log `request_id`/`user_id`; kanal log `errors` dan retensi log harian 30 hari.
 - **F-14 Jejak audit penuh**: baris realisasi, penyesuaian, dan versi dokumen ikut tercatat (nilai lama dan baru, pelaku, waktu); kartu "Jejak audit" di detail laporan untuk admin, pemeriksa, dan sekolah sendiri (pimpinan tidak). Simpan angka kini memperbarui baris per model sehingga ubah dan hapus baris realisasi tercatat.
 - **F-08 Penguncian periode**: admin dinas membuka kunci laporan selesai dari layar pemeriksaan dengan alasan wajib (ditolak bila tahun ditutup); `needs_rereview` pada bulan sesudahnya yang selesai.

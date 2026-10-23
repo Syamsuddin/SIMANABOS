@@ -1,9 +1,13 @@
 <?php
 
+use App\Actions\Budget\SaveAllocation;
 use App\Enums\FiscalYearStatus;
 use App\Enums\RoleName;
 use App\Models\ExpenseType;
 use App\Models\FiscalYear;
+use App\Models\FundSource;
+use App\Models\MonthlyReport;
+use App\Models\School;
 
 beforeEach(function () {
     $this->admin = userWithRole(RoleName::AdminDinas, ['must_change_password' => false]);
@@ -86,4 +90,20 @@ it('tidak menyelesaikan jenis belanja milik tahun lain lewat URL', function () {
     $type = $other->expenseTypes()->create(['code' => 'A', 'name' => 'Satu']);
 
     $this->actingAs($this->admin)->get(route('admin.fiscal-years.expense-types.edit', [$this->year, $type]))->assertNotFound();
+});
+
+it('jenis belanja yang dipakai laporan: kode tak berubah, tak dapat dihapus, boleh dinonaktifkan', function () {
+    $type = $this->year->expenseTypes()->create(['code' => 'BARJAS', 'name' => 'Barang dan Jasa']);
+    $school = School::factory()->create();
+    (new SaveAllocation)($school, $this->year, FundSource::query()->create(['code' => 'BOS_REG', 'name' => 'BOS Reguler']), '100000000.00', 1);
+    MonthlyReport::query()->withoutGlobalScopes()->where('school_id', $school->id)->where('month', 1)->firstOrFail()
+        ->lines()->create(['expense_type_id' => $type->id, 'gross_amount' => '500000.00', 'refund_amount' => '0.00']);
+
+    $this->actingAs($this->admin)->put(route('admin.fiscal-years.expense-types.update', [$this->year, $type]), [
+        'code' => 'UBAH', 'name' => 'Barang dan Jasa', 'is_active' => '0',
+    ])->assertRedirect();
+    $this->delete(route('admin.fiscal-years.expense-types.update', [$this->year, $type]))->assertMethodNotAllowed();
+
+    $type->refresh();
+    expect($type->code)->toBe('BARJAS')->and($type->is_active)->toBeFalse()->and(ExpenseType::query()->whereKey($type->id)->exists())->toBeTrue();
 });

@@ -13,6 +13,7 @@ use App\Actions\Reports\StartReview;
 use App\Actions\Reports\SubmitReport;
 use App\Actions\Reports\UnlockReport;
 use App\Actions\Reports\WithdrawReport;
+use App\Actions\Schools\ProposeOfficial;
 use App\Enums\ReportStatus;
 use App\Enums\RoleName;
 use App\Exceptions\DomainRuleException;
@@ -23,6 +24,7 @@ use App\Models\FundSource;
 use App\Models\MonthlyReport;
 use App\Models\OpeningBalance;
 use App\Models\School;
+use App\Models\SchoolOfficial;
 use App\Services\ReportStateMachine;
 
 beforeEach(function () {
@@ -233,4 +235,15 @@ it('Persetujuan kepsek aktif: ajukan ditolak tanpa persetujuan, perubahan angka 
 
 it('Persetujuan kepsek nonaktif: tombol setuju ditolak', function () {
     expect(fn () => app(ApproveByPrincipal::class)(smReport($this), $this->principal))->toThrow(DomainRuleException::class);
+});
+
+it('StateMachine: identity_snapshot tetap memuat bendahara lama setelah pergantian (docs/23 F-03)', function () {
+    SchoolOfficial::factory()->create(['school_id' => $this->school->id, 'name' => 'Bendahara Lama', 'started_at' => '2020-01-01']);
+    $report = app(SubmitReport::class)(smReport($this), $this->operator);
+    expect($report->identity_snapshot['treasurer'])->toBe('Bendahara Lama');
+
+    app(ProposeOfficial::class)($this->school, ['role' => 'bendahara', 'name' => 'Bendahara Baru', 'started_at' => now()->toDateString()], $this->admin);
+
+    expect($this->school->officials()->withoutGlobalScopes()->active()->where('role', 'bendahara')->value('name'))->toBe('Bendahara Baru')
+        ->and(smFresh($report)->identity_snapshot['treasurer'])->toBe('Bendahara Lama');
 });
