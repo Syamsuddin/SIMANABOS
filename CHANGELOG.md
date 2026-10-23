@@ -4,6 +4,12 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/) dan ve
 
 ## [Unreleased]
 
+### Ditambahkan
+- **Data uji lengkap (`DemoSeeder`)** lewat `php artisan migrate:fresh --seed`: enam sekolah fiktif dengan skenario laporan 2026 (selesai, dalam pemeriksaan, perlu perbaikan dengan catatan, buka kunci + tinjau ulang, selisih saldo, antrean lama, terlambat, saldo awal belum diverifikasi, RKAS melebihi pagu, dokumen kurang), RKAS berversi, PDF contoh berversi, laporan periodik, notifikasi, dan jejak audit; 14 akun aktif bersandi `password`. Daftar di `USERS.md`.
+
+### Diubah
+- `AdminSeeder` dihapus; akun admin uji kini `admin` / `password` dari `DemoSeeder` (sesuai `docs/10`). `DatabaseSeeder` menolak berjalan di produksi.
+
 ## [1.0.0-rc.1] - 2026-10-23
 
 Kandidat rilis MVP. Seluruh fitur F-01–F-15 selesai dan `docs/23_ACCEPTANCE_CRITERIA.md` tidak lagi memuat fitur aktif; 308 tes hijau. Gladi `docs/25_RELEASE_CHECKLIST.md` lulus di salinan lokal mode produksi (migrasi, cadangan, down/up, optimize, smoke HTTP 52/52 untuk kelima peran, uji pemulihan cadangan). Versi `1.0.0` diterbitkan setelah checklist dijalankan di server produksi.

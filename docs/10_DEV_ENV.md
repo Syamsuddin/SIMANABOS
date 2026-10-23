@@ -6,7 +6,7 @@ PHP ≥ 8.3 dengan ekstensi di `docs/09_STACK.md`, Composer 2, Node.js LTS + npm
 ## Setup lokal
 1. Salin `.env.example` → `.env`; isi variabel di bawah.
 2. Jalankan urutan setup di `docs/11_COMMANDS.md` (bagian Setup).
-3. Seeder `DatabaseSeeder` mengisi data uji: tahun anggaran 2026 berstatus open, sumber dana `REGULER` dan `KINERJA`, contoh jenis belanja (barang dan jasa; modal peralatan dan mesin), jenis dokumen, matriks dokumen wajib contoh, dua sekolah contoh (SDN 1 Sukamaju negeri, SD Muhammadiyah 2 swasta), satu akun per role dengan sandi `password` dan `must_change_password=false`. Semua data seeder berlabel data uji dan tidak boleh dijalankan di produksi (`DatabaseSeeder` menolak bila `APP_ENV=production`).
+3. Seeder `DatabaseSeeder` mengisi data referensi lalu data uji `DemoSeeder`: tahun anggaran 2026 berstatus open (Tahap I Jan–Jun, Tahap II Jul–Des, tenggat tanggal 10), sumber dana `REGULER` dan `KINERJA`, kecamatan contoh, jenis belanja contoh (barang dan jasa; modal peralatan dan mesin; modal aset tetap lainnya; satu nonaktif), jenis dokumen, matriks dokumen wajib contoh, enam sekolah fiktif dengan skenario laporan berbeda (SD Negeri 1 Sukamaju negeri, SD Muhammadiyah 2 Contoh swasta, dan lainnya), satu akun atau lebih per role dengan sandi `password` dan `must_change_password=false`. Daftar akun dan skenario: `USERS.md`. Semua data seeder berlabel data uji dan tidak boleh dijalankan di produksi (`DatabaseSeeder` menolak bila `APP_ENV=production`).
 
 ## Variabel `.env`
 
