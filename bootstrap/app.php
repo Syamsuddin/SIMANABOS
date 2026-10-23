@@ -2,8 +2,10 @@
 
 use App\Exceptions\DomainRuleException;
 use App\Exceptions\InvalidTransitionException;
+use App\Http\Middleware\AssignRequestId;
 use App\Http\Middleware\EnsurePasswordChanged;
 use App\Http\Middleware\EnsureUserIsActive;
+use App\Http\Middleware\SecurityHeaders;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -21,6 +23,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'active' => EnsureUserIsActive::class,
             'must.change.password' => EnsurePasswordChanged::class,
         ]);
+
+        $middleware->append(SecurityHeaders::class);
+        $middleware->web(append: [AssignRequestId::class]);
 
         $middleware->redirectUsersTo(fn () => route('home'));
     })

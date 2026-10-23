@@ -68,9 +68,9 @@
     {
       "mulai": "2026-10-23T09:34:01+08:00",
       "selesai": null,
-      "step": 5,
-      "detik": 567,
-      "tok_est": 19821
+      "step": 8,
+      "detik": 787,
+      "tok_est": 27294
     }
   ],
   "step_berjalan": null,
@@ -1432,13 +1432,108 @@
         "config/activitylog.php clean_after_days=365: perintah activitylog:clean tersedia namun tak dijadwalkan; jangan dijadwalkan (docs/20 butir 5)"
       ],
       "selesai": "2026-10-23T09:45:14+08:00"
+    },
+    {
+      "fitur": "Fase 8 Pengerasan operasional (perintah rilis, cadangan, log, header)",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T09:46:20+08:00",
+      "rencana": [
+        "app/Console/Commands/CreateAdminCommand.php",
+        "app/Console/Commands/RecomputeBalancesCommand.php",
+        "app/Console/Commands/BackupCommand.php",
+        "app/Http/Middleware/AssignRequestId.php",
+        "app/Http/Middleware/SecurityHeaders.php",
+        "bootstrap/app.php",
+        "config/logging.php",
+        "config/simanabos.php",
+        "routes/console.php",
+        ".env.example",
+        ".gitignore",
+        "tests/Feature/Ops/CreateAdminCommandTest.php",
+        "tests/Feature/Ops/RecomputeBalancesCommandTest.php",
+        "tests/Feature/Ops/BackupCommandTest.php",
+        "tests/Feature/Ops/HttpHardeningTest.php",
+        "docs/11_COMMANDS.md",
+        "docs/25_RELEASE_CHECKLIST.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Perintah Artisan",
+          "mulai": "2026-10-23T09:46:21+08:00",
+          "selesai": "2026-10-23T09:47:34+08:00",
+          "detik": 73,
+          "tok_est": 2623,
+          "muat": [
+            "app/Console/Commands/*",
+            "app/Http/Middleware/*",
+            "bootstrap/app.php",
+            "config/logging.php",
+            "config/simanabos.php",
+            "routes/console.php",
+            ".env.example"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Tes",
+          "mulai": "2026-10-23T09:47:34+08:00",
+          "selesai": "2026-10-23T09:49:09+08:00",
+          "detik": 96,
+          "tok_est": 3299,
+          "muat": [
+            "tests/Feature/Ops/CreateAdminCommandTest.php",
+            "tests/Feature/Ops/RecomputeBalancesCommandTest.php",
+            "tests/Feature/Ops/BackupCommandTest.php",
+            "tests/Feature/Ops/HttpHardeningTest.php",
+            "docs/11_COMMANDS.md",
+            "docs/25_RELEASE_CHECKLIST.md"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-23T09:49:09+08:00",
+          "selesai": "2026-10-23T09:49:59+08:00",
+          "detik": 51,
+          "tok_est": 1551,
+          "muat": [
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      "detik": 220,
+      "tok_est": 7473,
+      "deviasi": [
+        "docs/11 — baris simanabos:flag-late & remind-deadlines diganti simanabos:process-deadlines (kode F-12 menggabungkan keduanya; kode menang)",
+        "app/Http/Middleware/SecurityHeaders.php — header docs/21 dipasang di aplikasi, bukan hanya Nginx (server belum dipilih)"
+      ],
+      "warn_dilewati": [
+        "S1: tak ada blok 23; kriteria berasal dari docs/11, 15, 21, 25 dan dibuktikan tests/Feature/Ops",
+        "S6: konvensi diperiksa manual (Commands, Middleware sesuai 12)"
+      ],
+      "asumsi": [
+        "Cadangan disimpan di storage/app/backups (di-gitignore) kecuali SIMANABOS_BACKUP_PATH diisi; idealnya disalin ke mesin lain (di luar aplikasi)",
+        "HSTS hanya bila request HTTPS terdeteksi; di balik proxy perlu trusted proxies/fastcgi HTTPS"
+      ],
+      "dokumen_diperbarui": [
+        "docs/11_COMMANDS.md (process-deadlines, backup)",
+        "docs/25_RELEASE_CHECKLIST.md langkah 4"
+      ],
+      "ditunda": [
+        "Salinan cadangan ke luar server (offsite) — butuh keputusan infrastruktur",
+        "Konfigurasi Nginx/HTTPS — server & domain [TERBUKA]"
+      ],
+      "selesai": "2026-10-23T09:50:00+08:00"
     }
   ],
   "akumulasi": {
-    "detik": 3588,
-    "tok_est": 84965,
+    "detik": 3808,
+    "tok_est": 92438,
     "tok_terukur": 0,
-    "step": 37,
-    "fitur": 17
+    "step": 40,
+    "fitur": 18
   }
 }

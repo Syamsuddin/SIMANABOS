@@ -9,3 +9,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('simanabos:process-deadlines')->dailyAt('00:30')->timezone('Asia/Makassar')->withoutOverlapping();
+Schedule::command('simanabos:backup')->dailyAt('01:30')->timezone('Asia/Makassar')->withoutOverlapping();

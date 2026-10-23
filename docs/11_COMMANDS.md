@@ -19,8 +19,8 @@
 | Penjadwal (sekali jalan) | `php artisan schedule:run` |
 | Daftar route | `php artisan route:list --except-vendor` |
 | Hitung ulang cache saldo satu sekolah | `php artisan simanabos:recompute {npsn} {year}` |
-| Bendera terlambat manual | `php artisan simanabos:flag-late` |
-| Kirim pengingat tenggat manual | `php artisan simanabos:remind-deadlines` |
+| Pengingat tenggat + bendera terlambat (manual; terjadwal 00.30 WITA) | `php artisan simanabos:process-deadlines` |
+| Cadangan basis data + arsip PDF (manual; terjadwal 01.30 WITA, retensi 30 hari) | `php artisan simanabos:backup` |
 | Buat admin pertama (produksi) | `php artisan simanabos:create-admin` |
 | Bersihkan cache | `php artisan optimize:clear` |
 | Optimasi produksi | `php artisan optimize` |

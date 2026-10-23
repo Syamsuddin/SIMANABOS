@@ -5,6 +5,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/) dan ve
 ## [Unreleased]
 
 ### Ditambahkan
+- **Pengerasan rilis (Fase 8)**: perintah `simanabos:create-admin` (admin pertama, wajib ganti sandi), `simanabos:recompute {npsn} {year}`, dan `simanabos:backup` (dump basis data + arsip PDF, izin 0640, terjadwal 01.30 WITA, retensi 30 hari); header `X-Frame-Options`, `Referrer-Policy`, `X-Content-Type-Options`, dan HSTS (HTTPS); `X-Request-Id` + konteks log `request_id`/`user_id`; kanal log `errors` dan retensi log harian 30 hari.
 - **F-14 Jejak audit penuh**: baris realisasi, penyesuaian, dan versi dokumen ikut tercatat (nilai lama dan baru, pelaku, waktu); kartu "Jejak audit" di detail laporan untuk admin, pemeriksa, dan sekolah sendiri (pimpinan tidak). Simpan angka kini memperbarui baris per model sehingga ubah dan hapus baris realisasi tercatat.
 - **F-08 Penguncian periode**: admin dinas membuka kunci laporan selesai dari layar pemeriksaan dengan alasan wajib (ditolak bila tahun ditutup); `needs_rereview` pada bulan sesudahnya yang selesai.
 - **F-12 Tenggat dan pengingat**: penjadwal harian `simanabos:process-deadlines` (00.30 WITA) mengirim pengingat H-N ke operator untuk laporan draf dan menandai `is_late` + notifikasi ke operator dan kepala sekolah pada H+1; halaman dan lonceng notifikasi; tanggal tenggat bawaan dan jumlah hari pengingat dapat diatur admin di Pengaturan Aplikasi.
