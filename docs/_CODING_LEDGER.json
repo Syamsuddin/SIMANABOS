@@ -64,14 +64,21 @@
       "step": 1,
       "detik": 120,
       "tok_est": 0
+    },
+    {
+      "mulai": "2026-10-23T09:34:01+08:00",
+      "selesai": null,
+      "step": 5,
+      "detik": 567,
+      "tok_est": 19821
     }
   ],
   "step_berjalan": null,
   "blueprint": {
     "sidik_awal": "0e5a72e32151f359",
-    "sidik": "45785c344034a7a3",
+    "sidik": "b3e4ec142d040b8f",
     "dokumen": 27,
-    "disegel": "2026-10-23T01:05:07+08:00",
+    "disegel": "2026-10-23T09:34:01+08:00",
     "riwayat": [
       {
         "dari": "0e5a72e32151f359",
@@ -112,9 +119,14 @@
         "dari": "e43ade97d6209d0b",
         "ke": "45785c344034a7a3",
         "pada": "2026-10-23T01:05:07+08:00"
+      },
+      {
+        "dari": "45785c344034a7a3",
+        "ke": "b3e4ec142d040b8f",
+        "pada": "2026-10-23T09:34:01+08:00"
       }
     ],
-    "sidik_sebelumnya": "e43ade97d6209d0b"
+    "sidik_sebelumnya": "45785c344034a7a3"
   },
   "riwayat_fitur": [
     {
@@ -1261,47 +1273,172 @@
         "Rekap sekolah sendiri (role operator/kepsek, docs/05) — di luar kriteria F-13"
       ],
       "selesai": "2026-10-23T01:02:05+08:00"
+    },
+    {
+      "fitur": "F-15 Tutup tahun",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T01:05:08+08:00",
+      "rencana": [
+        "app/Actions/FiscalYears/CloseFiscalYear.php",
+        "app/Http/Requests/Admin/CloseFiscalYearRequest.php",
+        "app/Policies/FiscalYearPolicy.php",
+        "app/Http/Controllers/Admin/FiscalYearController.php",
+        "routes/web.php",
+        "resources/views/admin/fiscal-years/show.blade.php",
+        "lang/id/domain.php",
+        "tests/Feature/FiscalYear/CloseFiscalYearTest.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Service/aksi + endpoint",
+          "mulai": "2026-10-23T01:05:08+08:00",
+          "selesai": "2026-10-23T01:07:07+08:00",
+          "detik": 120,
+          "tok_est": 0,
+          "muat": [
+            "CloseFiscalYear",
+            "controller",
+            "view",
+            "tests"
+          ]
+        }
+      ],
+      "detik": 120,
+      "tok_est": 0,
+      "asumsi": [
+        "Tahun berikut (year+1) wajib sudah dibuka sebelum tutup; saldo awal manual tahun berikut ditimpa carried_over"
+      ],
+      "ditunda": [
+        "Auto-buka tahun berikut saat tutup; roadmap 03 tak punya kolom status"
+      ],
+      "selesai": "2026-10-23T01:07:53+08:00"
+    },
+    {
+      "fitur": "F-14 Jejak audit penuh",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T09:35:49+08:00",
+      "rencana": [
+        "app/Models/ReportExpenseLine.php",
+        "app/Models/ReportAdjustment.php",
+        "app/Models/DocumentVersion.php",
+        "app/Actions/Reports/SaveReportFigures.php",
+        "app/Policies/MonthlyReportPolicy.php",
+        "app/Services/ReportAuditTrail.php",
+        "app/Http/Controllers/Review/ReviewController.php",
+        "app/Http/Controllers/School/ReportController.php",
+        "resources/views/reports/partials/audit-trail.blade.php",
+        "resources/views/review/show.blade.php",
+        "resources/views/school/reports/review.blade.php",
+        "lang/id/audit.php",
+        "tests/Feature/Audit/ReportAuditTest.php",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "docs/_archive/23-F-14.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Model/akses data",
+          "mulai": "2026-10-23T09:35:49+08:00",
+          "selesai": "2026-10-23T09:36:14+08:00",
+          "detik": 26,
+          "tok_est": 3744,
+          "muat": [
+            "app/Models/ReportExpenseLine.php",
+            "app/Models/ReportAdjustment.php",
+            "app/Models/DocumentVersion.php",
+            "app/Actions/Reports/SaveReportFigures.php",
+            "app/Policies/MonthlyReportPolicy.php"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Service",
+          "mulai": "2026-10-23T09:36:14+08:00",
+          "selesai": "2026-10-23T09:37:12+08:00",
+          "detik": 59,
+          "tok_est": 2954,
+          "muat": [
+            "app/Services/ReportAuditTrail.php",
+            "lang/id/audit.php",
+            "vendor/spatie/laravel-activitylog/src/Models/Activity.php"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Controller + UI",
+          "mulai": "2026-10-23T09:37:13+08:00",
+          "selesai": "2026-10-23T09:37:35+08:00",
+          "detik": 23,
+          "tok_est": 8600,
+          "muat": [
+            "app/Http/Controllers/Review/ReviewController.php",
+            "app/Http/Controllers/School/ReportController.php",
+            "resources/views/reports/partials/audit-trail.blade.php",
+            "resources/views/review/show.blade.php",
+            "resources/views/school/reports/review.blade.php"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "Tes",
+          "mulai": "2026-10-23T09:37:36+08:00",
+          "selesai": "2026-10-23T09:44:05+08:00",
+          "detik": 389,
+          "tok_est": 2120,
+          "muat": [
+            "tests/Feature/Audit/ReportAuditTest.php"
+          ]
+        },
+        {
+          "no": 5,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-23T09:44:05+08:00",
+          "selesai": "2026-10-23T09:45:14+08:00",
+          "detik": 70,
+          "tok_est": 2403,
+          "muat": [
+            "docs/23_ACCEPTANCE_CRITERIA.md",
+            "docs/_archive/23-F-14.md",
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      "detik": 567,
+      "tok_est": 19821,
+      "deviasi": [
+        "resources/views/reports/partials/audit-trail.blade.php — direktori view baru 'reports/partials' (partial dipakai bersama review/ dan school/)",
+        "app/Actions/Reports/SaveReportFigures.php — hapus-massal+buat-ulang baris diganti simpan selisih per model agar ubah/hapus baris tercatat audit; hasil akhir baris identik"
+      ],
+      "warn_dilewati": [
+        "S1: nama blok 23 'F-14 Jejak audit', kriteria dibuktikan ReportAuditTest + AuditTest",
+        "S6: konvensi diperiksa manual",
+        "S8: partial server-rendered tanpa async; state memuat/gagal tak berlaku, state kosong ada"
+      ],
+      "asumsi": [
+        "Entri updated yang hanya menyentuh cache computed_* disembunyikan dari tampilan (log tetap utuh)",
+        "storage_path versi dokumen tidak dicatat audit (path internal)"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (F-14 diarsipkan ke docs/_archive/23-F-14.md)"
+      ],
+      "landmine_tersentuh": [
+        "Eloquent\\Collection::except() menyaring berdasarkan primary key model, bukan kunci array hasil keyBy — pakai reject() dengan kunci"
+      ],
+      "ditunda": [
+        "config/activitylog.php clean_after_days=365: perintah activitylog:clean tersedia namun tak dijadwalkan; jangan dijadwalkan (docs/20 butir 5)"
+      ],
+      "selesai": "2026-10-23T09:45:14+08:00"
     }
   ],
   "akumulasi": {
-    "detik": 3021,
-    "tok_est": 65144,
+    "detik": 3588,
+    "tok_est": 84965,
     "tok_terukur": 0,
-    "step": 32,
-    "fitur": 15
-  },
-  "fitur_aktif": {
-    "fitur": "F-15 Tutup tahun",
-    "rute": "Fitur baru (vertical slice)",
-    "mulai": "2026-10-23T01:05:08+08:00",
-    "rencana": [
-      "app/Actions/FiscalYears/CloseFiscalYear.php",
-      "app/Http/Requests/Admin/CloseFiscalYearRequest.php",
-      "app/Policies/FiscalYearPolicy.php",
-      "app/Http/Controllers/Admin/FiscalYearController.php",
-      "routes/web.php",
-      "resources/views/admin/fiscal-years/show.blade.php",
-      "lang/id/domain.php",
-      "tests/Feature/FiscalYear/CloseFiscalYearTest.php"
-    ],
-    "total_step": 0,
-    "step": [
-      {
-        "no": 1,
-        "nama": "Service/aksi + endpoint",
-        "mulai": "2026-10-23T01:05:08+08:00",
-        "selesai": "2026-10-23T01:07:07+08:00",
-        "detik": 120,
-        "tok_est": 0,
-        "muat": [
-          "CloseFiscalYear",
-          "controller",
-          "view",
-          "tests"
-        ]
-      }
-    ],
-    "detik": 120,
-    "tok_est": 0
+    "step": 37,
+    "fitur": 17
   }
 }

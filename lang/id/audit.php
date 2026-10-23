@@ -1,0 +1,47 @@
+<?php
+
+return [
+    'events' => [
+        'created' => 'Dibuat',
+        'updated' => 'Diubah',
+        'deleted' => 'Dihapus',
+        'restored' => 'Dipulihkan',
+    ],
+    'subjects' => [
+        'report' => 'Laporan',
+        'line' => 'Realisasi :type',
+        'adjustment' => 'Penyesuaian',
+        'document' => 'Dokumen #:id',
+        'version' => 'Versi dokumen #:id',
+    ],
+    // Kolom tanpa label (kunci asing, cache internal) tidak ditampilkan.
+    'fields' => [
+        'status' => 'Status',
+        'is_nil' => 'Laporan nihil',
+        'receipt_bos' => 'Penerimaan BOS',
+        'receipt_other' => 'Penerimaan lain',
+        'treasury_deposit' => 'Penyetoran ke kas negara',
+        'tax_withheld' => 'Pajak dipungut',
+        'tax_remitted' => 'Pajak disetor',
+        'bank_balance_bku' => 'Saldo bank (BKU)',
+        'cash_balance_bku' => 'Saldo tunai (BKU)',
+        'is_late' => 'Terlambat',
+        'needs_rereview' => 'Perlu tinjau ulang',
+        'gross_amount' => 'Belanja bruto',
+        'refund_amount' => 'Pengembalian belanja',
+        'kind' => 'Jenis penyesuaian',
+        'origin_month' => 'Bulan asal',
+        'amount' => 'Nilai',
+        'reason' => 'Alasan',
+        'current_version_id' => 'Versi berlaku',
+        'deleted_at' => 'Dihapus pada',
+        'version_no' => 'Nomor versi',
+        'original_name' => 'Nama berkas',
+        'size_bytes' => 'Ukuran (bita)',
+        'replaced_reason' => 'Alasan penggantian',
+    ],
+    'money' => ['receipt_bos', 'receipt_other', 'treasury_deposit', 'tax_withheld', 'tax_remitted', 'bank_balance_bku', 'cash_balance_bku', 'gross_amount', 'refund_amount', 'amount'],
+    'system' => 'Sistem',
+    'yes' => 'Ya',
+    'no' => 'Tidak',
+];

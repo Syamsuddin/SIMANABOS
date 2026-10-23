@@ -40,9 +40,13 @@ class SaveReportFigures
             $changed = $report->isDirty() || $this->linesChanged($report, $lines);
             $report->save();
 
-            $report->lines()->delete();
+            // Simpan selisih per model (bukan hapus massal) agar setiap perubahan baris tercatat di jejak audit (docs/15).
+            $existing = $report->lines()->get()->keyBy('expense_type_id');
+            $existing->reject(fn ($line, $typeId) => array_key_exists($typeId, $lines))->each->delete();
             foreach ($lines as $typeId => $line) {
-                $report->lines()->create(['expense_type_id' => $typeId, ...$line]);
+                $existing->has($typeId)
+                    ? $existing[$typeId]->fill($line)->save()
+                    : $report->lines()->create(['expense_type_id' => $typeId, ...$line]);
             }
 
             // Angka berubah setelah disetujui kepala sekolah → persetujuan gugur (docs/06 §C.5).

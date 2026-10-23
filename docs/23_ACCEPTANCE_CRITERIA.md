@@ -45,6 +45,4 @@ Kriteria antarmuka umum untuk setiap fitur ber-UI (pola di `docs/26_UI_CONVENTIO
 - Diarsipkan di `docs/_archive/23-F-13.md`.
 
 ## F-14 Jejak audit
-- Ubah `receipt_bos` tercatat dengan nilai lama dan baru, pelaku, waktu.
-- Tidak ada route ubah/hapus audit (`php artisan route:list | grep -i activity` kosong).
-- Verifikasi: `php artisan test --filter=Audit` → hijau.
+- Diarsipkan di `docs/_archive/23-F-14.md`.
