@@ -17,6 +17,7 @@ use App\Models\FiscalYear;
 use App\Models\MonthlyReport;
 use App\Models\ReviewNote;
 use App\Services\DocumentCompletenessChecker;
+use App\Services\ReportAuditTrail;
 use App\Services\ReportBalanceCalculator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -53,11 +54,11 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function show(MonthlyReport $report, ReportBalanceCalculator $calculator, DocumentCompletenessChecker $completeness): View
+    public function show(MonthlyReport $report, ReportBalanceCalculator $calculator, DocumentCompletenessChecker $completeness, ReportAuditTrail $audit): View
     {
         Gate::authorize('view', $report);
         abort_if(request()->user()->isSchoolUser(), 404);
-        $report->load(['school', 'fundSource', 'fiscalYear', 'lines.expenseType', 'adjustments', 'reviewer', 'statusHistories.actor', 'reviewNotes.reviewer']);
+        $report->load(['school', 'fundSource', 'fiscalYear', 'lines' => fn ($q) => $q->orderBy('expense_type_id')->with('expenseType'), 'adjustments', 'reviewer', 'statusHistories.actor', 'reviewNotes.reviewer']);
 
         return view('review.show', [
             'report' => $report,
@@ -67,6 +68,7 @@ class ReviewController extends Controller
             'canClaim' => request()->user()->can('claim', $report),
             'canReview' => request()->user()->can('review', $report),
             'canUnlock' => request()->user()->can('unlock', $report),
+            'auditTrail' => request()->user()->can('viewAudit', $report) ? $audit->forReport($report) : null,
         ]);
     }
 

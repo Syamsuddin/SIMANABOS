@@ -196,6 +196,10 @@
                     <p class="text-small text-ink-muted">Belum ada perubahan status.</p>
                 @endforelse
             </x-pm.card>
+
+            @if ($auditTrail !== null)
+                @include('reports.partials.audit-trail')
+            @endif
         </aside>
     </div>
 @endsection

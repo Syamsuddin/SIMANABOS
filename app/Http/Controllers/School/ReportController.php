@@ -11,6 +11,7 @@ use App\Models\FiscalYear;
 use App\Models\MonthlyReport;
 use App\Services\DocumentCompletenessChecker;
 use App\Services\RemainingBudgetCalculator;
+use App\Services\ReportAuditTrail;
 use App\Services\ReportBalanceCalculator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -37,7 +38,7 @@ class ReportController extends Controller
         ]);
     }
 
-    public function edit(MonthlyReport $report, ReportBalanceCalculator $calculator, RemainingBudgetCalculator $remaining, DocumentCompletenessChecker $completeness): View
+    public function edit(MonthlyReport $report, ReportBalanceCalculator $calculator, RemainingBudgetCalculator $remaining, DocumentCompletenessChecker $completeness, ReportAuditTrail $audit): View
     {
         Gate::authorize('view', $report);
         $report->load(['lines', 'adjustments', 'fundSource', 'fiscalYear', 'reviewNotes.reviewer', 'statusHistories.actor']);
@@ -62,6 +63,7 @@ class ReportController extends Controller
             'documents' => $report->documents()->with(['types', 'currentVersion', 'versions'])->orderBy('id')->get(),
             'documentTypes' => DocumentType::query()->where('scope', 'monthly')->orderBy('id')->get(),
             'completeness' => $completeness->forReport($report),
+            'auditTrail' => request()->user()->can('viewAudit', $report) ? $audit->forReport($report) : null,
         ]);
     }
 

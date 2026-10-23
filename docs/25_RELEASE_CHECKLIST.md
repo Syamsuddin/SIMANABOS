@@ -7,7 +7,7 @@ Jalankan berurutan. Berhenti pada langkah yang gagal. Perintah: `docs/11_COMMAND
 | 1 | `php artisan test` dan `./vendor/bin/pint --test` di commit rilis | Exit 0 |
 | 2 | Buat tag `vX.Y.Z` di `main` | Tag ada |
 | 3 | Uji migrasi pada salinan basis data produksi terbaru | `php artisan migrate --force` exit 0; `migrate:status` tanpa Pending |
-| 4 | Backup produksi: `mysqldump` basis data + arsip `storage/app/private` | Kedua berkas ada, ukuran > 0, dicatat lokasinya |
+| 4 | Backup produksi: `php artisan simanabos:backup` (`mysqldump` basis data + arsip `storage/app/private`) | Kedua berkas ada, ukuran > 0, dicatat lokasinya |
 | 5 | Mode pemeliharaan: `php artisan down` | Situs menampilkan 503 |
 | 6 | Deploy kode tag; `composer install --no-dev --optimize-autoloader`; `npm ci && npm run build` | Exit 0 |
 | 7 | `php artisan migrate --force` ⚠️ | Exit 0 |

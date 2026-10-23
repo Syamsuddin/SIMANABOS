@@ -28,6 +28,12 @@ class MonthlyReportPolicy
             && (! $user->isSchoolUser() || $user->school_id === $report->school_id);
     }
 
+    /** Jejak audit: admin dan pemeriksa semua, role sekolah milik sendiri, pimpinan tidak (docs/05). */
+    public function viewAudit(User $user, MonthlyReport $report): bool
+    {
+        return $this->view($user, $report) && ! $user->hasRole(RoleName::PimpinanDinas->value);
+    }
+
     /** Angka diisi operator sekolah sendiri, hanya pada status draf/perlu perbaikan dan tahun terbuka (docs/05, 06 §D). */
     public function update(User $user, MonthlyReport $report): bool
     {

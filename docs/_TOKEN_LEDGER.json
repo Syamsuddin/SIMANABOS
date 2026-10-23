@@ -164,6 +164,46 @@
       "chars": 30467,
       "cpt": 3.5,
       "est_tokens": 8705
+    },
+    {
+      "ts": "2026-10-23T01:07:53+08:00",
+      "type": "task",
+      "task": "F-15 Tutup tahun",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 30121,
+      "cpt": 3.5,
+      "est_tokens": 8606
+    },
+    {
+      "ts": "2026-10-23T09:45:15+08:00",
+      "type": "task",
+      "task": "F-14 Jejak audit penuh",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 29946,
+      "cpt": 3.5,
+      "est_tokens": 8556
+    },
+    {
+      "ts": "2026-10-23T09:50:00+08:00",
+      "type": "task",
+      "task": "Fase 8 Pengerasan operasional (perintah rilis, cadangan, log, header)",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 30037,
+      "cpt": 3.5,
+      "est_tokens": 8582
+    },
+    {
+      "ts": "2026-10-23T09:59:01+08:00",
+      "type": "task",
+      "task": "Fase 8 Smoke test dan gladi rilis",
+      "route": "Fitur baru (vertical slice)",
+      "files": 8,
+      "chars": 27788,
+      "cpt": 3.5,
+      "est_tokens": 7939
     }
   ],
   "measured_sessions": {}

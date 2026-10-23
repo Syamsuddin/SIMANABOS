@@ -64,14 +64,21 @@
       "step": 1,
       "detik": 120,
       "tok_est": 0
+    },
+    {
+      "mulai": "2026-10-23T09:34:01+08:00",
+      "selesai": null,
+      "step": 11,
+      "detik": 789,
+      "tok_est": 42772
     }
   ],
   "step_berjalan": null,
   "blueprint": {
     "sidik_awal": "0e5a72e32151f359",
-    "sidik": "45785c344034a7a3",
+    "sidik": "b3e4ec142d040b8f",
     "dokumen": 27,
-    "disegel": "2026-10-23T01:05:07+08:00",
+    "disegel": "2026-10-23T09:34:01+08:00",
     "riwayat": [
       {
         "dari": "0e5a72e32151f359",
@@ -112,9 +119,14 @@
         "dari": "e43ade97d6209d0b",
         "ke": "45785c344034a7a3",
         "pada": "2026-10-23T01:05:07+08:00"
+      },
+      {
+        "dari": "45785c344034a7a3",
+        "ke": "b3e4ec142d040b8f",
+        "pada": "2026-10-23T09:34:01+08:00"
       }
     ],
-    "sidik_sebelumnya": "e43ade97d6209d0b"
+    "sidik_sebelumnya": "45785c344034a7a3"
   },
   "riwayat_fitur": [
     {
@@ -1261,47 +1273,365 @@
         "Rekap sekolah sendiri (role operator/kepsek, docs/05) — di luar kriteria F-13"
       ],
       "selesai": "2026-10-23T01:02:05+08:00"
+    },
+    {
+      "fitur": "F-15 Tutup tahun",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T01:05:08+08:00",
+      "rencana": [
+        "app/Actions/FiscalYears/CloseFiscalYear.php",
+        "app/Http/Requests/Admin/CloseFiscalYearRequest.php",
+        "app/Policies/FiscalYearPolicy.php",
+        "app/Http/Controllers/Admin/FiscalYearController.php",
+        "routes/web.php",
+        "resources/views/admin/fiscal-years/show.blade.php",
+        "lang/id/domain.php",
+        "tests/Feature/FiscalYear/CloseFiscalYearTest.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Service/aksi + endpoint",
+          "mulai": "2026-10-23T01:05:08+08:00",
+          "selesai": "2026-10-23T01:07:07+08:00",
+          "detik": 120,
+          "tok_est": 0,
+          "muat": [
+            "CloseFiscalYear",
+            "controller",
+            "view",
+            "tests"
+          ]
+        }
+      ],
+      "detik": 120,
+      "tok_est": 0,
+      "asumsi": [
+        "Tahun berikut (year+1) wajib sudah dibuka sebelum tutup; saldo awal manual tahun berikut ditimpa carried_over"
+      ],
+      "ditunda": [
+        "Auto-buka tahun berikut saat tutup; roadmap 03 tak punya kolom status"
+      ],
+      "selesai": "2026-10-23T01:07:53+08:00"
+    },
+    {
+      "fitur": "F-14 Jejak audit penuh",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T09:35:49+08:00",
+      "rencana": [
+        "app/Models/ReportExpenseLine.php",
+        "app/Models/ReportAdjustment.php",
+        "app/Models/DocumentVersion.php",
+        "app/Actions/Reports/SaveReportFigures.php",
+        "app/Policies/MonthlyReportPolicy.php",
+        "app/Services/ReportAuditTrail.php",
+        "app/Http/Controllers/Review/ReviewController.php",
+        "app/Http/Controllers/School/ReportController.php",
+        "resources/views/reports/partials/audit-trail.blade.php",
+        "resources/views/review/show.blade.php",
+        "resources/views/school/reports/review.blade.php",
+        "lang/id/audit.php",
+        "tests/Feature/Audit/ReportAuditTest.php",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "docs/_archive/23-F-14.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Model/akses data",
+          "mulai": "2026-10-23T09:35:49+08:00",
+          "selesai": "2026-10-23T09:36:14+08:00",
+          "detik": 26,
+          "tok_est": 3744,
+          "muat": [
+            "app/Models/ReportExpenseLine.php",
+            "app/Models/ReportAdjustment.php",
+            "app/Models/DocumentVersion.php",
+            "app/Actions/Reports/SaveReportFigures.php",
+            "app/Policies/MonthlyReportPolicy.php"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Service",
+          "mulai": "2026-10-23T09:36:14+08:00",
+          "selesai": "2026-10-23T09:37:12+08:00",
+          "detik": 59,
+          "tok_est": 2954,
+          "muat": [
+            "app/Services/ReportAuditTrail.php",
+            "lang/id/audit.php",
+            "vendor/spatie/laravel-activitylog/src/Models/Activity.php"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Controller + UI",
+          "mulai": "2026-10-23T09:37:13+08:00",
+          "selesai": "2026-10-23T09:37:35+08:00",
+          "detik": 23,
+          "tok_est": 8600,
+          "muat": [
+            "app/Http/Controllers/Review/ReviewController.php",
+            "app/Http/Controllers/School/ReportController.php",
+            "resources/views/reports/partials/audit-trail.blade.php",
+            "resources/views/review/show.blade.php",
+            "resources/views/school/reports/review.blade.php"
+          ]
+        },
+        {
+          "no": 4,
+          "nama": "Tes",
+          "mulai": "2026-10-23T09:37:36+08:00",
+          "selesai": "2026-10-23T09:44:05+08:00",
+          "detik": 389,
+          "tok_est": 2120,
+          "muat": [
+            "tests/Feature/Audit/ReportAuditTest.php"
+          ]
+        },
+        {
+          "no": 5,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-23T09:44:05+08:00",
+          "selesai": "2026-10-23T09:45:14+08:00",
+          "detik": 70,
+          "tok_est": 2403,
+          "muat": [
+            "docs/23_ACCEPTANCE_CRITERIA.md",
+            "docs/_archive/23-F-14.md",
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      "detik": 567,
+      "tok_est": 19821,
+      "deviasi": [
+        "resources/views/reports/partials/audit-trail.blade.php — direktori view baru 'reports/partials' (partial dipakai bersama review/ dan school/)",
+        "app/Actions/Reports/SaveReportFigures.php — hapus-massal+buat-ulang baris diganti simpan selisih per model agar ubah/hapus baris tercatat audit; hasil akhir baris identik"
+      ],
+      "warn_dilewati": [
+        "S1: nama blok 23 'F-14 Jejak audit', kriteria dibuktikan ReportAuditTest + AuditTest",
+        "S6: konvensi diperiksa manual",
+        "S8: partial server-rendered tanpa async; state memuat/gagal tak berlaku, state kosong ada"
+      ],
+      "asumsi": [
+        "Entri updated yang hanya menyentuh cache computed_* disembunyikan dari tampilan (log tetap utuh)",
+        "storage_path versi dokumen tidak dicatat audit (path internal)"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (F-14 diarsipkan ke docs/_archive/23-F-14.md)"
+      ],
+      "landmine_tersentuh": [
+        "Eloquent\\Collection::except() menyaring berdasarkan primary key model, bukan kunci array hasil keyBy — pakai reject() dengan kunci"
+      ],
+      "ditunda": [
+        "config/activitylog.php clean_after_days=365: perintah activitylog:clean tersedia namun tak dijadwalkan; jangan dijadwalkan (docs/20 butir 5)"
+      ],
+      "selesai": "2026-10-23T09:45:14+08:00"
+    },
+    {
+      "fitur": "Fase 8 Pengerasan operasional (perintah rilis, cadangan, log, header)",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T09:46:20+08:00",
+      "rencana": [
+        "app/Console/Commands/CreateAdminCommand.php",
+        "app/Console/Commands/RecomputeBalancesCommand.php",
+        "app/Console/Commands/BackupCommand.php",
+        "app/Http/Middleware/AssignRequestId.php",
+        "app/Http/Middleware/SecurityHeaders.php",
+        "bootstrap/app.php",
+        "config/logging.php",
+        "config/simanabos.php",
+        "routes/console.php",
+        ".env.example",
+        ".gitignore",
+        "tests/Feature/Ops/CreateAdminCommandTest.php",
+        "tests/Feature/Ops/RecomputeBalancesCommandTest.php",
+        "tests/Feature/Ops/BackupCommandTest.php",
+        "tests/Feature/Ops/HttpHardeningTest.php",
+        "docs/11_COMMANDS.md",
+        "docs/25_RELEASE_CHECKLIST.md",
+        "CHANGELOG.md"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Perintah Artisan",
+          "mulai": "2026-10-23T09:46:21+08:00",
+          "selesai": "2026-10-23T09:47:34+08:00",
+          "detik": 73,
+          "tok_est": 2623,
+          "muat": [
+            "app/Console/Commands/*",
+            "app/Http/Middleware/*",
+            "bootstrap/app.php",
+            "config/logging.php",
+            "config/simanabos.php",
+            "routes/console.php",
+            ".env.example"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Tes",
+          "mulai": "2026-10-23T09:47:34+08:00",
+          "selesai": "2026-10-23T09:49:09+08:00",
+          "detik": 96,
+          "tok_est": 3299,
+          "muat": [
+            "tests/Feature/Ops/CreateAdminCommandTest.php",
+            "tests/Feature/Ops/RecomputeBalancesCommandTest.php",
+            "tests/Feature/Ops/BackupCommandTest.php",
+            "tests/Feature/Ops/HttpHardeningTest.php",
+            "docs/11_COMMANDS.md",
+            "docs/25_RELEASE_CHECKLIST.md"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Gerbang fitur",
+          "mulai": "2026-10-23T09:49:09+08:00",
+          "selesai": "2026-10-23T09:49:59+08:00",
+          "detik": 51,
+          "tok_est": 1551,
+          "muat": [
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      "detik": 220,
+      "tok_est": 7473,
+      "deviasi": [
+        "docs/11 — baris simanabos:flag-late & remind-deadlines diganti simanabos:process-deadlines (kode F-12 menggabungkan keduanya; kode menang)",
+        "app/Http/Middleware/SecurityHeaders.php — header docs/21 dipasang di aplikasi, bukan hanya Nginx (server belum dipilih)"
+      ],
+      "warn_dilewati": [
+        "S1: tak ada blok 23; kriteria berasal dari docs/11, 15, 21, 25 dan dibuktikan tests/Feature/Ops",
+        "S6: konvensi diperiksa manual (Commands, Middleware sesuai 12)"
+      ],
+      "asumsi": [
+        "Cadangan disimpan di storage/app/backups (di-gitignore) kecuali SIMANABOS_BACKUP_PATH diisi; idealnya disalin ke mesin lain (di luar aplikasi)",
+        "HSTS hanya bila request HTTPS terdeteksi; di balik proxy perlu trusted proxies/fastcgi HTTPS"
+      ],
+      "dokumen_diperbarui": [
+        "docs/11_COMMANDS.md (process-deadlines, backup)",
+        "docs/25_RELEASE_CHECKLIST.md langkah 4"
+      ],
+      "ditunda": [
+        "Salinan cadangan ke luar server (offsite) — butuh keputusan infrastruktur",
+        "Konfigurasi Nginx/HTTPS — server & domain [TERBUKA]"
+      ],
+      "selesai": "2026-10-23T09:50:00+08:00"
+    },
+    {
+      "fitur": "Fase 8 Smoke test dan gladi rilis",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T09:53:09+08:00",
+      "rencana": [
+        "tests/Feature/Smoke/SmokeFixtures.php",
+        "tests/Feature/Smoke/PageSmokeTest.php",
+        "CHANGELOG.md",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "docs/_archive/23-F-02.md",
+        "docs/_archive/23-F-03.md",
+        "docs/_archive/23-F-04.md",
+        "docs/_archive/23-F-05.md",
+        "docs/_archive/23-F-06.md",
+        "docs/_archive/23-F-07.md",
+        "docs/_archive/23-F-08.md",
+        "docs/_archive/23-F-09.md",
+        "docs/_archive/23-F-10.md",
+        "docs/_archive/23-F-11.md",
+        "docs/_archive/23-F-12.md",
+        "docs/_archive/23-F-13.md",
+        "tests/Feature/Reference/ExpenseTypeTest.php",
+        "tests/Feature/Report/ReportStateMachineTest.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Tes smoke UI",
+          "mulai": "2026-10-23T09:53:09+08:00",
+          "selesai": "2026-10-23T09:53:10+08:00",
+          "detik": 1,
+          "tok_est": 6777,
+          "muat": [
+            "tests/Feature/Smoke/SmokeFixtures.php",
+            "tests/Feature/Smoke/PageSmokeTest.php",
+            "routes/web.php",
+            "app/Http/Controllers/School/PeriodicReportController.php"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Arsip 23 + butir sisa",
+          "mulai": "2026-10-23T09:55:07+08:00",
+          "selesai": "2026-10-23T09:55:07+08:00",
+          "detik": 0,
+          "tok_est": 7766,
+          "muat": [
+            "docs/23_ACCEPTANCE_CRITERIA.md",
+            "docs/_archive/23-F-02.md",
+            "docs/_archive/23-F-03.md",
+            "tests/Feature/Reference/ExpenseTypeTest.php",
+            "tests/Feature/Report/ReportStateMachineTest.php",
+            "CHANGELOG.md"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Gladi rilis docs/25 (lokal)",
+          "mulai": "2026-10-23T09:59:00+08:00",
+          "selesai": "2026-10-23T09:59:00+08:00",
+          "detik": 1,
+          "tok_est": 935,
+          "muat": [
+            "docs/25_RELEASE_CHECKLIST.md",
+            "docs/22_CHANGE_POLICY.md"
+          ]
+        }
+      ],
+      "detik": 2,
+      "tok_est": 15478,
+      "deviasi": [
+        "Tidak ada berkas aplikasi baru; gladi memakai git worktree + DB simanabos_rehearsal sekali-pakai (sudah dihapus)"
+      ],
+      "warn_dilewati": [
+        "S1: tak ada blok 23 untuk smoke; kriteria dari docs/13 (UI smoke) dan docs/25 langkah 11",
+        "S6: diperiksa manual",
+        "Gladi: SESSION_SECURE_COOKIE=false karena server lokal HTTP; produksi wajib true + HTTPS"
+      ],
+      "asumsi": [
+        "School role boleh membuka /periodik (controller yang sama merender tampilan sekolah, dibatasi SchoolScope)",
+        "Peran dinas boleh membuka halaman laporan sekolah dalam mode baca (Policy view); tombol ubah tersembunyi lewat Policy update"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (tak ada fitur aktif; F-02/F-03 sisa diarsipkan)"
+      ],
+      "landmine_tersentuh": [
+        "docs/21 menyebut middleware role: di setiap route, kode memakai Gate/Policy per aksi controller — dijaga tests/Feature/Smoke/PageSmokeTest.php (route GET baru wajib masuk matriks)"
+      ],
+      "ditunda": [
+        "Rilis produksi sungguhan (docs/25 langkah 2–12 di server) — server & domain [TERBUKA]",
+        "Tag vX.Y.Z — gerbang manusia",
+        "Merge feat/fase-8-pengerasan ke main — pemilik proyek (docs/22)",
+        "Salinan cadangan offsite",
+        "Migrasi Pending di DB dev lokal (2026_10_28_100000_create_periodic_reports_table) belum dijalankan"
+      ],
+      "selesai": "2026-10-23T09:59:00+08:00"
     }
   ],
   "akumulasi": {
-    "detik": 3021,
-    "tok_est": 65144,
+    "detik": 3810,
+    "tok_est": 107916,
     "tok_terukur": 0,
-    "step": 32,
-    "fitur": 15
-  },
-  "fitur_aktif": {
-    "fitur": "F-15 Tutup tahun",
-    "rute": "Fitur baru (vertical slice)",
-    "mulai": "2026-10-23T01:05:08+08:00",
-    "rencana": [
-      "app/Actions/FiscalYears/CloseFiscalYear.php",
-      "app/Http/Requests/Admin/CloseFiscalYearRequest.php",
-      "app/Policies/FiscalYearPolicy.php",
-      "app/Http/Controllers/Admin/FiscalYearController.php",
-      "routes/web.php",
-      "resources/views/admin/fiscal-years/show.blade.php",
-      "lang/id/domain.php",
-      "tests/Feature/FiscalYear/CloseFiscalYearTest.php"
-    ],
-    "total_step": 0,
-    "step": [
-      {
-        "no": 1,
-        "nama": "Service/aksi + endpoint",
-        "mulai": "2026-10-23T01:05:08+08:00",
-        "selesai": "2026-10-23T01:07:07+08:00",
-        "detik": 120,
-        "tok_est": 0,
-        "muat": [
-          "CloseFiscalYear",
-          "controller",
-          "view",
-          "tests"
-        ]
-      }
-    ],
-    "detik": 120,
-    "tok_est": 0
+    "step": 43,
+    "fitur": 19
   }
 }
