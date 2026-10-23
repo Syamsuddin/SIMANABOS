@@ -68,9 +68,9 @@
     {
       "mulai": "2026-10-23T09:34:01+08:00",
       "selesai": null,
-      "step": 10,
-      "detik": 788,
-      "tok_est": 41837
+      "step": 11,
+      "detik": 789,
+      "tok_est": 42772
     }
   ],
   "step_berjalan": null,
@@ -1527,73 +1527,111 @@
         "Konfigurasi Nginx/HTTPS — server & domain [TERBUKA]"
       ],
       "selesai": "2026-10-23T09:50:00+08:00"
+    },
+    {
+      "fitur": "Fase 8 Smoke test dan gladi rilis",
+      "rute": "Fitur baru (vertical slice)",
+      "mulai": "2026-10-23T09:53:09+08:00",
+      "rencana": [
+        "tests/Feature/Smoke/SmokeFixtures.php",
+        "tests/Feature/Smoke/PageSmokeTest.php",
+        "CHANGELOG.md",
+        "docs/23_ACCEPTANCE_CRITERIA.md",
+        "docs/_archive/23-F-02.md",
+        "docs/_archive/23-F-03.md",
+        "docs/_archive/23-F-04.md",
+        "docs/_archive/23-F-05.md",
+        "docs/_archive/23-F-06.md",
+        "docs/_archive/23-F-07.md",
+        "docs/_archive/23-F-08.md",
+        "docs/_archive/23-F-09.md",
+        "docs/_archive/23-F-10.md",
+        "docs/_archive/23-F-11.md",
+        "docs/_archive/23-F-12.md",
+        "docs/_archive/23-F-13.md",
+        "tests/Feature/Reference/ExpenseTypeTest.php",
+        "tests/Feature/Report/ReportStateMachineTest.php"
+      ],
+      "total_step": 0,
+      "step": [
+        {
+          "no": 1,
+          "nama": "Tes smoke UI",
+          "mulai": "2026-10-23T09:53:09+08:00",
+          "selesai": "2026-10-23T09:53:10+08:00",
+          "detik": 1,
+          "tok_est": 6777,
+          "muat": [
+            "tests/Feature/Smoke/SmokeFixtures.php",
+            "tests/Feature/Smoke/PageSmokeTest.php",
+            "routes/web.php",
+            "app/Http/Controllers/School/PeriodicReportController.php"
+          ]
+        },
+        {
+          "no": 2,
+          "nama": "Arsip 23 + butir sisa",
+          "mulai": "2026-10-23T09:55:07+08:00",
+          "selesai": "2026-10-23T09:55:07+08:00",
+          "detik": 0,
+          "tok_est": 7766,
+          "muat": [
+            "docs/23_ACCEPTANCE_CRITERIA.md",
+            "docs/_archive/23-F-02.md",
+            "docs/_archive/23-F-03.md",
+            "tests/Feature/Reference/ExpenseTypeTest.php",
+            "tests/Feature/Report/ReportStateMachineTest.php",
+            "CHANGELOG.md"
+          ]
+        },
+        {
+          "no": 3,
+          "nama": "Gladi rilis docs/25 (lokal)",
+          "mulai": "2026-10-23T09:59:00+08:00",
+          "selesai": "2026-10-23T09:59:00+08:00",
+          "detik": 1,
+          "tok_est": 935,
+          "muat": [
+            "docs/25_RELEASE_CHECKLIST.md",
+            "docs/22_CHANGE_POLICY.md"
+          ]
+        }
+      ],
+      "detik": 2,
+      "tok_est": 15478,
+      "deviasi": [
+        "Tidak ada berkas aplikasi baru; gladi memakai git worktree + DB simanabos_rehearsal sekali-pakai (sudah dihapus)"
+      ],
+      "warn_dilewati": [
+        "S1: tak ada blok 23 untuk smoke; kriteria dari docs/13 (UI smoke) dan docs/25 langkah 11",
+        "S6: diperiksa manual",
+        "Gladi: SESSION_SECURE_COOKIE=false karena server lokal HTTP; produksi wajib true + HTTPS"
+      ],
+      "asumsi": [
+        "School role boleh membuka /periodik (controller yang sama merender tampilan sekolah, dibatasi SchoolScope)",
+        "Peran dinas boleh membuka halaman laporan sekolah dalam mode baca (Policy view); tombol ubah tersembunyi lewat Policy update"
+      ],
+      "dokumen_diperbarui": [
+        "docs/23 (tak ada fitur aktif; F-02/F-03 sisa diarsipkan)"
+      ],
+      "landmine_tersentuh": [
+        "docs/21 menyebut middleware role: di setiap route, kode memakai Gate/Policy per aksi controller — dijaga tests/Feature/Smoke/PageSmokeTest.php (route GET baru wajib masuk matriks)"
+      ],
+      "ditunda": [
+        "Rilis produksi sungguhan (docs/25 langkah 2–12 di server) — server & domain [TERBUKA]",
+        "Tag vX.Y.Z — gerbang manusia",
+        "Merge feat/fase-8-pengerasan ke main — pemilik proyek (docs/22)",
+        "Salinan cadangan offsite",
+        "Migrasi Pending di DB dev lokal (2026_10_28_100000_create_periodic_reports_table) belum dijalankan"
+      ],
+      "selesai": "2026-10-23T09:59:00+08:00"
     }
   ],
   "akumulasi": {
-    "detik": 3809,
-    "tok_est": 106981,
+    "detik": 3810,
+    "tok_est": 107916,
     "tok_terukur": 0,
-    "step": 42,
-    "fitur": 18
-  },
-  "fitur_aktif": {
-    "fitur": "Fase 8 Smoke test dan gladi rilis",
-    "rute": "Fitur baru (vertical slice)",
-    "mulai": "2026-10-23T09:53:09+08:00",
-    "rencana": [
-      "tests/Feature/Smoke/SmokeFixtures.php",
-      "tests/Feature/Smoke/PageSmokeTest.php",
-      "CHANGELOG.md",
-      "docs/23_ACCEPTANCE_CRITERIA.md",
-      "docs/_archive/23-F-02.md",
-      "docs/_archive/23-F-03.md",
-      "docs/_archive/23-F-04.md",
-      "docs/_archive/23-F-05.md",
-      "docs/_archive/23-F-06.md",
-      "docs/_archive/23-F-07.md",
-      "docs/_archive/23-F-08.md",
-      "docs/_archive/23-F-09.md",
-      "docs/_archive/23-F-10.md",
-      "docs/_archive/23-F-11.md",
-      "docs/_archive/23-F-12.md",
-      "docs/_archive/23-F-13.md",
-      "tests/Feature/Reference/ExpenseTypeTest.php",
-      "tests/Feature/Report/ReportStateMachineTest.php"
-    ],
-    "total_step": 0,
-    "step": [
-      {
-        "no": 1,
-        "nama": "Tes smoke UI",
-        "mulai": "2026-10-23T09:53:09+08:00",
-        "selesai": "2026-10-23T09:53:10+08:00",
-        "detik": 1,
-        "tok_est": 6777,
-        "muat": [
-          "tests/Feature/Smoke/SmokeFixtures.php",
-          "tests/Feature/Smoke/PageSmokeTest.php",
-          "routes/web.php",
-          "app/Http/Controllers/School/PeriodicReportController.php"
-        ]
-      },
-      {
-        "no": 2,
-        "nama": "Arsip 23 + butir sisa",
-        "mulai": "2026-10-23T09:55:07+08:00",
-        "selesai": "2026-10-23T09:55:07+08:00",
-        "detik": 0,
-        "tok_est": 7766,
-        "muat": [
-          "docs/23_ACCEPTANCE_CRITERIA.md",
-          "docs/_archive/23-F-02.md",
-          "docs/_archive/23-F-03.md",
-          "tests/Feature/Reference/ExpenseTypeTest.php",
-          "tests/Feature/Report/ReportStateMachineTest.php",
-          "CHANGELOG.md"
-        ]
-      }
-    ],
-    "detik": 1,
-    "tok_est": 14543
+    "step": 43,
+    "fitur": 19
   }
 }
